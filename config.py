@@ -1,10 +1,10 @@
 from os import path
 
 # Pasta que contêm imagem 
-IMG_DIR = path.join(path.dirname(__file__), 'assets', 'img')
+IMG_DIR = path.join(path.dirname(__file__), 'Imagens')
 
-WIDTH = 700
-HEIGHT = 450
+WIDTH = 1440
+HEIGHT = 780
 
 FPS = 30
 

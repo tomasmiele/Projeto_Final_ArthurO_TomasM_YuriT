@@ -1,6 +1,7 @@
 # Importa e inicia pacotes
 import pygame
 from config import WIDTH, HEIGHT, INIT, GAME, QUIT
+from assets import load_assets
 
 pygame.init()
 pygame.mixer.init()
@@ -8,7 +9,9 @@ pygame.mixer.init()
 # Tela principal
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Título do jogo')
-image = pygame.image.load('assets/img/https://p4.wallpaperbetter.com/wallpaper/306/264/982/pixel-art-castle-fantasy-art-clouds-dark-hd-wallpaper-preview.jpg').convert()
+assets = load_assets()
+
+image = assets['background']
 # ==== Loop principal ====
 game = True
 while game:
@@ -20,7 +23,7 @@ while game:
 
     # ---- Gera saídas
     window.fill((255, 0, 0))
-    window.blit(image, (10,10))
+    window.blit(image, (0,0))
 
     # ---- Atualiza o estado do jogo
     pygame.display.update()
