@@ -1,2 +1,8 @@
 WIDTH = 700
 HEIGHT = 450
+
+FPS = 30
+
+INIT = 0
+GAME = 1
+QUIT = 2
