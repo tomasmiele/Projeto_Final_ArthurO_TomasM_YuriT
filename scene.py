@@ -7,5 +7,5 @@ def make(m):
             if m[i][j] == 1:
                 x = i * 20
                 y = j * 20
-                all_walls.add(Wall(x, y))
+                all_walls.add(Wall(x, y)) #Wall é pra ser a class das paredes
     return all_walls

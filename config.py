@@ -4,7 +4,7 @@ from os import path
 IMG_DIR = path.join(path.dirname(__file__), 'Imagens')
 
 WIDTH = 1440
-HEIGHT = 780
+HEIGHT = 790
 
 FPS = 30
 
