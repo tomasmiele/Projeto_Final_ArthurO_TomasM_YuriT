@@ -12,6 +12,30 @@ pygame.display.set_caption('Título do jogo')
 assets = load_assets()
 
 fundo = assets[BACKGROUND]
+
+#classe para fazer com que o botão seja clicavel e mude a tela
+class Button():
+    def __init__(self,x, y, image, scale):
+        width = 900
+        height = 500
+        self.image = pygame.transform.scale(image, (int(width * scale), int(height * scale)))
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x, y)
+        self.cliked = False
+
+    def draw(self):
+        action = False
+        pos = pygame.mouse.get_pos() #pega a posição do mouse
+        if self.rect.collidepoint(pos):
+            if pygame.mouse.get_pressed()[0] == 1 and self.cliked == False:
+                self.cliked = True
+                action = True
+                print('pressionado')
+        #return action
+        
+
+        window.blit(self.image, (self.rect.x, self.rect.y))
+
 # ==== Loop principal ====
 game = True
 while game:
@@ -24,9 +48,11 @@ while game:
     # ---- Gera saídas
     window.fill((255, 0, 0))
     window.blit(fundo, (0,0))
-    botao=assets[BOTAO_JOGAR]
-    botao=pygame.transform.scale(botao,(900,500))
-    window.blit(botao,(WIDTH/5,HEIGHT/5))
+    img_botao = assets[BOTAO_JOGAR]
+    botao = Button(488, 258, img_botao, 0.5)
+    botao.draw() #deixar assim para aparecer o botao enquanto nao resolver o codigo abaixo
+    #if botao.draw() == True:
+        #mudar de tela
 
     # ---- Atualiza o estado do jogo
     pygame.display.update()
