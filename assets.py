@@ -1,6 +1,6 @@
 import pygame
 import os
-from config import IMG_DIR, SND_DIR
+from config import IMG_DIR, SND_DIR, PERSONAGEM_WIDTH,MONSTRO_WIDTH,PERSONAGEM_HEIGHT,MONSTRO_HEIGHT
 
 SWOOSH_SOUND='swoosh_sound'
 BACKGROUND='background'
