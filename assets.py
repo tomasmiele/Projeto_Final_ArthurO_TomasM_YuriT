@@ -2,19 +2,21 @@ import pygame
 import os
 from config import IMG_DIR, SND_DIR, PERSONAGEM_WIDTH,MONSTRO_WIDTH,PERSONAGEM_HEIGHT,MONSTRO_HEIGHT
 
-SWOOSH_SOUND='swoosh_sound'
-BACKGROUND='background'
-BOTAO_JOGAR='jogar'
-PERSONAGEM_PRINCIPAL='personagem_principal'
-MONSTRO='monstro'
+SWOOSH_SOUND =  'swoosh_sound'
+BACKGROUND = 'background'
+BOTAO_JOGAR  = 'jogar'
+PERSONAGEM_PRINCIPAL = 'personagem_principal'
+MONSTRO = 'monstro'
+CHAO_CASTELO = 'chao_castelo'
 
 def load_assets():
     assets = {}
     #imagens
     assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR, 'castelo.png')).convert()
     assets[BOTAO_JOGAR] = pygame.image.load(os.path.join(IMG_DIR, 'botao_jogar.png')).convert_alpha()
-    assets[PERSONAGEM_PRINCIPAL]=pygame.image.load(os.path.join(IMG_DIR, 'personagem_principal.png')).convert_alpha()
-    assets[MONSTRO]=pygame.image.load(os.path.join(IMG_DIR, 'monstro.png')).convert_alpha()
+    assets[PERSONAGEM_PRINCIPAL] = pygame.image.load(os.path.join(IMG_DIR, 'personagem_principal.png')).convert_alpha()
+    assets[MONSTRO] = pygame.image.load(os.path.join(IMG_DIR, 'monstro.png')).convert_alpha()
+    assets[CHAO_CASTELO] = pygame.image.load(os.path.join(IMG_DIR, 'chao_castelo.png')).convert()
 
     #sons
     pygame.mixer.music.load(os.path.join(SND_DIR, 'musica_principal.wav'))
