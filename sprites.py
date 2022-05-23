@@ -15,13 +15,15 @@ class Button():
         self.cliked = False
 
     def draw(self, window):
+        window.blit(self.image, (self.rect.x, self.rect.y))
+    
+    def press(self):
         action = False
         pos = pygame.mouse.get_pos() #pega a posição do mouse
         if self.rect.collidepoint(pos):
             if pygame.mouse.get_pressed()[0] == 1 and self.cliked == False:
                 self.cliked = True
                 action = True
-                print('pressionado')
-        window.blit(self.image, (0, 0))
-        
-        #return action
+            if pygame.mouse.get_pressed()[0] == 0:
+                self.cliked = False
+        return action

@@ -31,7 +31,7 @@ def init_screen(window):
                 state = QUIT
                 running = False
 
-            if botao.draw(window) == True:
+            if botao.press() == True:
                 state = GAME
                 running = False
 
