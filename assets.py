@@ -12,7 +12,7 @@ def load_assets():
     #imagens
     assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR, 'castelo.png')).convert()
     assets[BOTAO_JOGAR] = pygame.image.load(os.path.join(IMG_DIR, 'botao_jogar.png')).convert_alpha()
-
+    
     #sons
     pygame.mixer.music.load(os.path.join(SND_DIR, 'musica_principal.wav'))
     pygame.mixer.music.set_volume(0.4)
