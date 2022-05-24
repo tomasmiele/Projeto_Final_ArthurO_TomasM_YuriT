@@ -1,6 +1,6 @@
 import pygame
 import os
-from config import IMG_DIR, SND_DIR, PERSONAGEM_WIDTH,MONSTRO_WIDTH,PERSONAGEM_HEIGHT,MONSTRO_HEIGHT
+from config import HEIGHT, IMG_DIR, SND_DIR, PERSONAGEM_WIDTH,MONSTRO_WIDTH,PERSONAGEM_HEIGHT,MONSTRO_HEIGHT, WIDTH
 
 SWOOSH_SOUND =  'swoosh_sound'
 BACKGROUND = 'background'
@@ -17,6 +17,7 @@ def load_assets():
     assets[PERSONAGEM_PRINCIPAL] = pygame.image.load(os.path.join(IMG_DIR, 'personagem_principal.png')).convert_alpha()
     assets[MONSTRO] = pygame.image.load(os.path.join(IMG_DIR, 'monstro.png')).convert_alpha()
     assets[CHAO_CASTELO] = pygame.image.load(os.path.join(IMG_DIR, 'chao_castelo.png')).convert()
+    assets[CHAO_CASTELO] = pygame.transform.scale(assets['chao_castelo'], (WIDTH, HEIGHT))
 
     #sons
     pygame.mixer.music.load(os.path.join(SND_DIR, 'musica_principal.wav'))
