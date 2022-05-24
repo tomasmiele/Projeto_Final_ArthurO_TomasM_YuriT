@@ -27,3 +27,28 @@ class Button():
             if pygame.mouse.get_pressed()[0] == 0:
                 self.cliked = False
         return action
+class Personagem(pygame.sprite.Sprite):
+    def __init__(self, x, y, image):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = image
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x, y)
+        self.speedx = 0
+        self.speedy = 0
+
+    def update(self):
+        # Atualização da posição da nave
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+
+        # Mantem dentro da tela
+        if self.rect.right > WIDTH:
+            self.rect.right = WIDTH
+        if self.rect.left < 0:
+            self.rect.left = 0
+        if self.rect.bottom > HEIGHT:
+            self.rect.bottom = HEIGHT
+        if self.rect.top < 0:
+            self.rect.bottom = 0
