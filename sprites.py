@@ -27,6 +27,7 @@ class Button():
             if pygame.mouse.get_pressed()[0] == 0:
                 self.cliked = False
         return action
+
 class Personagem(pygame.sprite.Sprite):
     def __init__(self, x, y, image):
         # Construtor da classe mãe (Sprite).
@@ -51,4 +52,40 @@ class Personagem(pygame.sprite.Sprite):
         if self.rect.bottom > HEIGHT:
             self.rect.bottom = HEIGHT
         if self.rect.top < 0:
-            self.rect.bottom = 0
+            self.rect.top = 0
+    
+class Monstro(pygame.sprite.Sprite):
+    def __init__(self, img):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = img
+        self.rect = self.image.get_rect()
+        x = random.randint(0, WIDTH)
+        y = random.randint(0, HEIGHT)
+        self.rect.topleft = (x, y)
+        self.speedx = random.randint(-1, 1)
+        self.speedy = random.randint(-1, 1)
+        if self.speedx == 0:
+            self.speedx = 1
+        if self.speedy == 0:
+            self.speedy = 1
+
+    def update(self):
+        # Atualizando a posição do meteoro
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+        # Se o meteoro passar do final da tela, volta para cima e sorteia
+        # novas posições e velocidades
+        if self.rect.right > WIDTH:
+            self.rect.right = WIDTH
+            self.speedx = -self.speedx
+        if self.rect.left < 0:
+            self.rect.left = 0
+            self.speedx = -self.speedx
+        if self.rect.bottom > HEIGHT:
+            self.rect.bottom = HEIGHT
+            self.speedy = -self.speedy
+        if self.rect.top < 0:
+            self.rect.top = 0
+            self.speedy = -self.speedy

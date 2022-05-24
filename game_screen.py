@@ -2,7 +2,7 @@ import pygame
 from os import path
 from config import BLACK, FPS, GAME, QUIT, WIDTH, HEIGHT, IMG_DIR
 from assets import CHAO_CASTELO, MONSTRO, PERSONAGEM_PRINCIPAL, load_assets
-from sprites import Personagem
+from sprites import Personagem, Monstro
 
 def game_screen(window):
     # Variável para o ajuste de velocidade
@@ -18,9 +18,11 @@ def game_screen(window):
 
     img_personagem_principal = assets[PERSONAGEM_PRINCIPAL]
     personagem_principal = Personagem(100, 0, img_personagem_principal)
-    #window.blit(assets[MONSTRO], (#coordenadas de alguma sala sempre aleatório))
+    img_monstro = assets[MONSTRO]
+    monstro = Monstro(img_monstro)
 
     all_sprites.add(personagem_principal)
+    all_sprites.add(monstro)
     
     running = True
     while running:
