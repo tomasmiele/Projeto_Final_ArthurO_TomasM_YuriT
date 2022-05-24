@@ -34,25 +34,25 @@ def game_screen(window):
                 running = False
             if event.type == pygame.KEYDOWN:
             # Dependendo da tecla, altera a velocidade.
-                if event.key == pygame.K_a:
+                if event.key == pygame.K_LEFT:
                  personagem_principal.speedx -= 1
-                if event.key == pygame.K_d:
+                if event.key == pygame.K_RIGHT:
                     personagem_principal.speedx += 1
-                if event.key == pygame.K_w:
+                if event.key == pygame.K_UP:
                     personagem_principal.speedy -= 1
-                if event.key == pygame.K_s:
+                if event.key == pygame.K_DOWN:
                     personagem_principal.speedy += 1
             # Verifica se soltou alguma tecla.
             if event.type == pygame.KEYUP:
             # Dependendo da tecla, altera a velocidade.
-                if event.key == pygame.K_a:
+                if event.key == pygame.K_LEFT:
                     personagem_principal.speedx += 1
-                if event.key == pygame.K_d:
+                if event.key == pygame.K_RIGHT:
                     personagem_principal.speedx -= 1
-                if event.key == pygame.K_w:
-                    personagem_principal.speedx += 1
-                if event.key == pygame.K_s:
-                    personagem_principal.speedx -= 1
+                if event.key == pygame.K_UP:
+                    personagem_principal.speedy += 1
+                if event.key == pygame.K_DOWN:
+                    personagem_principal.speedy -= 1
         
         all_sprites.update() #atualiza a posição do personagem e do monstro
 
