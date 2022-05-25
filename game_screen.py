@@ -6,7 +6,7 @@ from sprites import Personagem, Monstro
 
 def game_screen(window):
     # Variável para o ajuste de velocidade
-    #clock = pygame.time.Clock()
+    clock = pygame.time.Clock()
 
     assets=load_assets()
     all_sprites = pygame.sprite.Group()
@@ -26,6 +26,7 @@ def game_screen(window):
     
     running = True
     while running:
+        clock.tick(FPS)
         window.fill(BLACK)
         window.blit(assets[CHAO_CASTELO], background_rect)
 
