@@ -1,6 +1,7 @@
 import pygame
-from assets import load_assets, PAREDE
+from assets import PAREDE2, load_assets, PAREDE
 from sprites import Wall
+import random
 
 def make(m):
     assets = load_assets()

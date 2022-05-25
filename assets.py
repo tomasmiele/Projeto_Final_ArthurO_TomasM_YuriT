@@ -9,6 +9,10 @@ PERSONAGEM_PRINCIPAL = 'personagem_principal'
 MONSTRO = 'monstro'
 CHAO_CASTELO = 'chao_castelo'
 PAREDE = 'parede'
+PAREDE2 = 'parede2'
+PAREDE3 = 'parede3'
+PAREDE4 = 'parede4'
+PAREDE5 = 'parede5'
 
 def load_assets():
     assets = {}
@@ -23,6 +27,14 @@ def load_assets():
     assets[CHAO_CASTELO] = pygame.transform.scale(assets[CHAO_CASTELO], (WIDTH, HEIGHT))
     assets[PAREDE] = pygame.image.load(os.path.join(IMG_DIR, 'parede.png')).convert()
     assets[PAREDE] = pygame.transform.scale(assets[PAREDE], (40, 40))
+    assets[PAREDE2] = pygame.image.load(os.path.join(IMG_DIR, 'parede2.png')).convert()
+    assets[PAREDE2] = pygame.transform.scale(assets[PAREDE], (40, 40))
+    assets[PAREDE3] = pygame.image.load(os.path.join(IMG_DIR, 'parede3.png')).convert()
+    assets[PAREDE3] = pygame.transform.scale(assets[PAREDE], (40, 40))
+    assets[PAREDE4] = pygame.image.load(os.path.join(IMG_DIR, 'parede4.png')).convert()
+    assets[PAREDE4] = pygame.transform.scale(assets[PAREDE], (40, 40))
+    assets[PAREDE5] = pygame.image.load(os.path.join(IMG_DIR, 'parede5.png')).convert()
+    assets[PAREDE5] = pygame.transform.scale(assets[PAREDE], (40, 40))
 
     #sons
     pygame.mixer.music.load(os.path.join(SND_DIR, 'musica_principal.wav'))
