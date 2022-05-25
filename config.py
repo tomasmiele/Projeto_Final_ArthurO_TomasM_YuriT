@@ -4,7 +4,7 @@ from os import path
 IMG_DIR = path.join(path.dirname(__file__), 'assets','Imagens')
 SND_DIR = path.join(path.dirname(__file__), 'assets','Sound')
 
-WIDTH = 1300
+WIDTH = 1200
 HEIGHT = 600
 FPS = 30
 

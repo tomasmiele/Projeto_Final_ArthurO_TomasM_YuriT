@@ -1,4 +1,5 @@
 import pygame
+from mapa import matriz
 from os import path
 from config import BLACK, FPS, GAME, QUIT, WIDTH, HEIGHT, IMG_DIR
 from assets import CHAO_CASTELO, MONSTRO, PERSONAGEM_PRINCIPAL, load_assets
@@ -17,11 +18,10 @@ def game_screen(window):
     personagem_principal = pygame.image.load(path.join(IMG_DIR, 'personagem_principal.png')).convert_alpha()
     monstro = pygame.image.load(path.join(IMG_DIR, 'monstro.png')).convert_alpha()
 
-    matriz = [[0,1,0,0],[1,1,0,0]]
     all_walls = make(matriz)
 
     img_personagem_principal = assets[PERSONAGEM_PRINCIPAL]
-    personagem_principal = Personagem(100, 0, img_personagem_principal, all_walls)
+    personagem_principal = Personagem(575, 562, img_personagem_principal, all_walls)
     img_monstro = assets[MONSTRO]
     monstro = Monstro(img_monstro)
 

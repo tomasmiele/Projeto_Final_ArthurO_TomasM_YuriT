@@ -22,7 +22,7 @@ def load_assets():
     assets[CHAO_CASTELO] = pygame.image.load(os.path.join(IMG_DIR, 'chao_castelo.png')).convert()
     assets[CHAO_CASTELO] = pygame.transform.scale(assets[CHAO_CASTELO], (WIDTH, HEIGHT))
     assets[PAREDE] = pygame.image.load(os.path.join(IMG_DIR, 'parede.png')).convert()
-    assets[PAREDE] = pygame.transform.scale(assets[PAREDE], (20, 20))
+    assets[PAREDE] = pygame.transform.scale(assets[PAREDE], (40, 40))
 
     #sons
     pygame.mixer.music.load(os.path.join(SND_DIR, 'musica_principal.wav'))
