@@ -8,6 +8,7 @@ BOTAO_JOGAR  = 'jogar'
 PERSONAGEM_PRINCIPAL = 'personagem_principal'
 MONSTRO = 'monstro'
 CHAO_CASTELO = 'chao_castelo'
+PAREDE = 'parede'
 
 def load_assets():
     assets = {}
@@ -20,6 +21,7 @@ def load_assets():
     assets[MONSTRO] = pygame.transform.scale(assets[MONSTRO], (MONSTRO_WIDTH, MONSTRO_HEIGHT))
     assets[CHAO_CASTELO] = pygame.image.load(os.path.join(IMG_DIR, 'chao_castelo.png')).convert()
     assets[CHAO_CASTELO] = pygame.transform.scale(assets[CHAO_CASTELO], (WIDTH, HEIGHT))
+    assets[PAREDE] = pygame.image.load(os.path.join(IMG_DIR, 'parede.png')).convert()
 
     #sons
     pygame.mixer.music.load(os.path.join(SND_DIR, 'musica_principal.wav'))

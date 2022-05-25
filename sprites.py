@@ -89,3 +89,12 @@ class Monstro(pygame.sprite.Sprite):
         if self.rect.top < 0:
             self.rect.top = 0
             self.speedy = -self.speedy
+
+class Wall(pygame.sprite.Sprite):
+    def __init__(self, img, x, y):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = img
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x, y)
