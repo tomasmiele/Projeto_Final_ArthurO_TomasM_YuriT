@@ -17,16 +17,18 @@ def game_screen(window):
     personagem_principal = pygame.image.load(path.join(IMG_DIR, 'personagem_principal.png')).convert_alpha()
     monstro = pygame.image.load(path.join(IMG_DIR, 'monstro.png')).convert_alpha()
 
-    img_personagem_principal = assets[PERSONAGEM_PRINCIPAL]
-    personagem_principal = Personagem(100, 0, img_personagem_principal)
-    img_monstro = assets[MONSTRO]
-    monstro = Monstro(img_monstro)
-
     matriz = [[0,1,0,0],[1,1,0,0]]
     all_walls = make(matriz)
 
+    img_personagem_principal = assets[PERSONAGEM_PRINCIPAL]
+    personagem_principal = Personagem(100, 0, img_personagem_principal, all_walls)
+    img_monstro = assets[MONSTRO]
+    monstro = Monstro(img_monstro)
+
+
     all_sprites.add(personagem_principal)
     all_sprites.add(monstro)
+
     for s in all_walls.sprites():
         all_sprites.add(s)
     
@@ -66,7 +68,7 @@ def game_screen(window):
         all_sprites.update() #atualiza a posição do personagem e do monstro
 
         all_sprites.draw(window)
-    
+
         hits = []
         hits = pygame.sprite.spritecollide(personagem_principal, all_walls, False)
         if hits != []:

@@ -29,7 +29,7 @@ class Button():
         return action
 
 class Personagem(pygame.sprite.Sprite):
-    def __init__(self, x, y, image):
+    def __init__(self, x, y, image, paredes):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
@@ -38,6 +38,7 @@ class Personagem(pygame.sprite.Sprite):
         self.rect.topleft = (x, y)
         self.speedx = 0
         self.speedy = 0
+        self.paredes = paredes
 
     def update(self):
         # Atualização da posição da nave
@@ -53,6 +54,16 @@ class Personagem(pygame.sprite.Sprite):
             self.rect.bottom = HEIGHT
         if self.rect.top < 0:
             self.rect.top = 0
+        
+        #evita ele passar por cima da parede
+        collisions = pygame.sprite.spritecollide(self, self.paredes, False)
+        for collision in collisions:
+            # Estava indo para a direita
+            if self.speedx > 0:
+                self.rect.right = collision.rect.left
+            # Estava indo para a esquerda
+            elif self.speedx < 0:
+                self.rect.left = collision.rect.right
     
 class Monstro(pygame.sprite.Sprite):
     def __init__(self, img):
