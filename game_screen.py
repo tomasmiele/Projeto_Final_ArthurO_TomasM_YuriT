@@ -54,18 +54,31 @@ def game_screen(window):
             # Verifica se soltou alguma tecla.
             if event.type == pygame.KEYUP:
             # Dependendo da tecla, altera a velocidade.
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_LEFT and personagem_principal.speedx != 0:
                     personagem_principal.speedx += 1
-                if event.key == pygame.K_RIGHT:
+                if event.key == pygame.K_RIGHT and personagem_principal.speedx != 0:
                     personagem_principal.speedx -= 1
-                if event.key == pygame.K_UP:
+                if event.key == pygame.K_UP and personagem_principal.speedy != 0:
                     personagem_principal.speedy += 1
-                if event.key == pygame.K_DOWN:
+                if event.key == pygame.K_DOWN and personagem_principal.speedy != 0:
                     personagem_principal.speedy -= 1
         
         all_sprites.update() #atualiza a posição do personagem e do monstro
 
         all_sprites.draw(window)
+    
+        hits = []
+        hits = pygame.sprite.spritecollide(personagem_principal, all_walls, False)
+        if hits != []:
+            print(hits)
+            if personagem_principal.speedx == 1:
+                personagem_principal.speedx -= 1
+            if personagem_principal.speedx == -1:
+                personagem_principal.speedx += 1
+            if personagem_principal.speedy == 1:
+                personagem_principal.speedy -= 1
+            if personagem_principal.speedx == -1:
+                personagem_principal.speedx += 1
 
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
