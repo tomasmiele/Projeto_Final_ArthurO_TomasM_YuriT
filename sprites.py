@@ -70,14 +70,14 @@ class Personagem(pygame.sprite.Sprite):
                 self.rect.bottom = collision.rect.top
     
 class Monstro(pygame.sprite.Sprite):
-    def __init__(self, img):
+    def __init__(self, img, paredes):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
         self.image = img
         self.rect = self.image.get_rect()
-        x = random.randint(0, WIDTH)
-        y = random.randint(0, HEIGHT)
+        x = random.randint(40, WIDTH - 40)
+        y = random.randint(40, HEIGHT - 40)
         self.rect.topleft = (x, y)
         self.speedx = random.randint(-1, 1)
         self.speedy = random.randint(-1, 1)
@@ -85,6 +85,7 @@ class Monstro(pygame.sprite.Sprite):
             self.speedx = 1
         if self.speedy == 0:
             self.speedy = 1
+        self.paredes = paredes
 
     def update(self):
         # Atualizando a posição do meteoro
@@ -104,6 +105,25 @@ class Monstro(pygame.sprite.Sprite):
         if self.rect.top < 0:
             self.rect.top = 0
             self.speedy = -self.speedy
+
+        #evita ele passar por cima da parede
+        collisions = pygame.sprite.spritecollide(self, self.paredes, False)
+        for collision in collisions:
+            # Estava indo para a direita
+            if self.speedx > 0:
+                self.rect.right = collision.rect.left
+                self.speedx = -self.speedx
+            # Estava indo para a esquerda
+            elif self.speedx < 0:
+                self.rect.left = collision.rect.right
+                self.speedx = -self.speedx
+            elif self.speedy < 0:
+                self.rect.top = collision.rect.bottom
+                self.speedy = -self.speedy
+            elif self.speedy > 0:
+                self.rect.bottom = collision.rect.top
+                self.speedy = -self.speedy
+
 
 class Wall(pygame.sprite.Sprite):
     def __init__(self, img, x, y):

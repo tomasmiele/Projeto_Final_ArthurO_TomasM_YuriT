@@ -23,7 +23,7 @@ def game_screen(window):
     img_personagem_principal = assets[PERSONAGEM_PRINCIPAL]
     personagem_principal = Personagem(575, 562, img_personagem_principal, all_walls)
     img_monstro = assets[MONSTRO]
-    monstro = Monstro(img_monstro)
+    monstro = Monstro(img_monstro, all_walls)
 
 
     all_sprites.add(personagem_principal)
