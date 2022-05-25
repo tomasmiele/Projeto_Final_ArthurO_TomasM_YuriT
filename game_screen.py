@@ -3,6 +3,7 @@ from os import path
 from config import BLACK, FPS, GAME, QUIT, WIDTH, HEIGHT, IMG_DIR
 from assets import CHAO_CASTELO, MONSTRO, PERSONAGEM_PRINCIPAL, load_assets
 from sprites import Personagem, Monstro
+from scene import make
 
 def game_screen(window):
     # Variável para o ajuste de velocidade
@@ -21,8 +22,13 @@ def game_screen(window):
     img_monstro = assets[MONSTRO]
     monstro = Monstro(img_monstro)
 
+    matriz = [[0,1,0,0],[1,1,0,0]]
+    all_walls = make(matriz)
+
     all_sprites.add(personagem_principal)
     all_sprites.add(monstro)
+    for s in all_walls.sprites():
+        all_sprites.add(s)
     
     running = True
     while running:
