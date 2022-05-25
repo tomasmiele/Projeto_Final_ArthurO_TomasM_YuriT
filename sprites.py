@@ -64,6 +64,10 @@ class Personagem(pygame.sprite.Sprite):
             # Estava indo para a esquerda
             elif self.speedx < 0:
                 self.rect.left = collision.rect.right
+            elif self.speedy < 0:
+                self.rect.top = collision.rect.bottom
+            elif self.speedy > 0:
+                self.rect.bottom = collision.rect.top
     
 class Monstro(pygame.sprite.Sprite):
     def __init__(self, img):
