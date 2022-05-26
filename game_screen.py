@@ -76,11 +76,11 @@ def game_screen(window):
 
         all_sprites.draw(window)
 
-        window.blit(fade(WIDTH, HEIGHT), (0, 0))
-        lanterna = circle_surface(30, (20, 20, 20))
-        window.blit(lanterna, (personagem_principal.posx, personagem_principal.posy), special_flags = pygame.BLEND_ADD)
+        #window.blit(fade(WIDTH, HEIGHT), (0, 0))
+        #lanterna = circle_surface(30, (20, 20, 20))
+        #window.blit(lanterna, (personagem_principal.posx, personagem_principal.posy), special_flags = pygame.BLEND_ADD)
 
-        all_personagem_principal.draw(window)
+        #all_personagem_principal.draw(window)
 
         #se o monstro bater no personagem principal ele morre e acaba o jogo
         hits = pygame.sprite.spritecollide(personagem_principal, all_monstros, False)
