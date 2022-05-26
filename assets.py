@@ -13,6 +13,8 @@ PAREDE2 = 'parede2'
 PAREDE3 = 'parede3'
 PAREDE4 = 'parede4'
 PAREDE5 = 'parede5'
+ANIMACAO_DIREITA='animacao_direita'
+ANIMACAO_ESQUERDA='animacao_esquerda'
 
 def load_assets():
     assets = {}
@@ -26,6 +28,26 @@ def load_assets():
     assets[MONSTRO] = pygame.transform.scale(assets[MONSTRO], (MONSTRO_WIDTH, MONSTRO_HEIGHT))
     assets[CHAO_CASTELO] = pygame.image.load(os.path.join(IMG_DIR, 'chao_castelo.png')).convert()
     assets[CHAO_CASTELO] = pygame.transform.scale(assets[CHAO_CASTELO], (WIDTH, HEIGHT))
+
+    #animação de andar
+    anim_direita = []
+    for i in range(8):
+        # Os arquivos de animação são numerados de 00 a 08
+        filename = os.path.join(IMG_DIR, '{}.png'.format(i))
+        img = pygame.image.load(filename).convert()
+        img = pygame.transform.scale(img, (18, 23))
+        anim_direita.append(img)
+    assets[ANIMACAO_ESQUERDA] = anim_direita
+
+    anim_esquerda = []
+    for i in range(8):
+        # Os arquivos de animação são numerados de 00 a 08
+        filename = os.path.join(IMG_DIR, 'esquerda{}.png'.format(i))
+        img = pygame.image.load(filename).convert()
+        img = pygame.transform.scale(img, (18, 23))
+        anim_esquerda.append(img)
+    assets[ANIM_ES] = anim_esquerda
+
 
     #Paredes
     assets[PAREDE] = pygame.image.load(os.path.join(IMG_DIR, 'Parede.png')).convert()
