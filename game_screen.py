@@ -68,19 +68,6 @@ def game_screen(window):
 
         all_sprites.draw(window)
 
-        hits = []
-        hits = pygame.sprite.spritecollide(personagem_principal, all_walls, False)
-        if hits != []:
-            print(hits)
-            if personagem_principal.speedx == 1:
-                personagem_principal.speedx -= 1
-            if personagem_principal.speedx == -1:
-                personagem_principal.speedx += 1
-            if personagem_principal.speedy == 1:
-                personagem_principal.speedy -= 1
-            if personagem_principal.speedx == -1:
-                personagem_principal.speedx += 1
-
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
 
