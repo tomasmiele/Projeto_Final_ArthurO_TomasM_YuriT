@@ -1,4 +1,5 @@
 import pygame
+from sympy import Q
 from mapa import matriz
 from os import path
 from config import BLACK, FPS, GAME, QUIT, WIDTH, HEIGHT, IMG_DIR
@@ -10,8 +11,9 @@ def game_screen(window):
     # Variável para o ajuste de velocidade
     clock = pygame.time.Clock()
 
-    assets=load_assets()
+    assets = load_assets()
     all_sprites = pygame.sprite.Group()
+    all_monstros = pygame.sprite.Group()
 
     background = pygame.image.load(path.join(IMG_DIR, 'chao_castelo.png')).convert()
     background_rect = background.get_rect()
@@ -27,6 +29,7 @@ def game_screen(window):
 
     all_sprites.add(personagem_principal)
     all_sprites.add(monstro)
+    all_monstros.add(monstro)
 
     for s in all_walls.sprites():
         all_sprites.add(s)
@@ -67,6 +70,12 @@ def game_screen(window):
         all_sprites.update() #atualiza a posição do personagem e do monstro
 
         all_sprites.draw(window)
+
+        #se o monstro bater no personagem principal ele morre e acaba o jogo
+        hits = pygame.sprite.spritecollide(personagem_principal, all_monstros, False)
+        if hits != []:
+            state = QUIT
+            running = False
 
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
