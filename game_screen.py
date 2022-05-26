@@ -2,11 +2,11 @@ import pygame
 from sympy import Q
 from mapa import matriz
 from os import path
-from config import BLACK, FPS, GAME, QUIT, WIDTH, HEIGHT, IMG_DIR
+from config import BLACK, FPS, GAME, QUIT, WHITE, WIDTH, HEIGHT, IMG_DIR
 from assets import CHAO_CASTELO, MONSTRO, PERSONAGEM_PRINCIPAL, load_assets
 from sprites import Personagem, Monstro
 from scene import make
-from fade import fade
+from fade import fade, circle_surface
 
 def game_screen(window):
     # Variável para o ajuste de velocidade
@@ -26,6 +26,8 @@ def game_screen(window):
 
     img_personagem_principal = assets[PERSONAGEM_PRINCIPAL]
     personagem_principal = Personagem(575, 562, img_personagem_principal, all_walls)
+    posx = 575
+    posy = 562
     img_monstro = assets[MONSTRO]
     monstro = Monstro(img_monstro, all_walls)
 
@@ -51,7 +53,7 @@ def game_screen(window):
             if event.type == pygame.KEYDOWN:
             # Dependendo da tecla, altera a velocidade.
                 if event.key == pygame.K_LEFT:
-                 personagem_principal.speedx -= 1
+                    personagem_principal.speedx -= 1
                 if event.key == pygame.K_RIGHT:
                     personagem_principal.speedx += 1
                 if event.key == pygame.K_UP:
@@ -74,7 +76,9 @@ def game_screen(window):
 
         all_sprites.draw(window)
 
-        window.blit(fade(WIDTH, HEIGHT), (0,0))
+        window.blit(fade(WIDTH, HEIGHT), (0, 0))
+        lanterna = circle_surface(30, (20, 20, 20))
+        window.blit(lanterna, (personagem_principal.posx, personagem_principal.posy), special_flags = pygame.BLEND_ADD)
 
         all_personagem_principal.draw(window)
 
