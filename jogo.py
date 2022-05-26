@@ -19,5 +19,5 @@ while state != QUIT:
         state = game_screen(window)
     else:
         state = QUIT
-
+ 
 pygame.quit() 
