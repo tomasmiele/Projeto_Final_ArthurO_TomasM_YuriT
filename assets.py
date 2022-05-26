@@ -30,23 +30,23 @@ def load_assets():
     assets[CHAO_CASTELO] = pygame.transform.scale(assets[CHAO_CASTELO], (WIDTH, HEIGHT))
 
     #animação de andar
-    anim_direita = []
+    animacao_direita = []
     for i in range(8):
         # Os arquivos de animação são numerados de 00 a 08
         filename = os.path.join(IMG_DIR, '{}.png'.format(i))
         img = pygame.image.load(filename).convert()
         img = pygame.transform.scale(img, (18, 23))
-        anim_direita.append(img)
-    assets[ANIMACAO_ESQUERDA] = anim_direita
+        animacao_direita.append(img)
+    assets[ANIMACAO_DIREITA] = animacao_direita
 
-    anim_esquerda = []
+    animacao_esquerda = []
     for i in range(8):
         # Os arquivos de animação são numerados de 00 a 08
         filename = os.path.join(IMG_DIR, 'esquerda{}.png'.format(i))
         img = pygame.image.load(filename).convert()
         img = pygame.transform.scale(img, (18, 23))
-        anim_esquerda.append(img)
-    assets[ANIM_ES] = anim_esquerda
+        animacao_esquerda.append(img)
+    assets[ANIMACAO_ESQUERDA] = animacao_esquerda
 
 
     #Paredes
