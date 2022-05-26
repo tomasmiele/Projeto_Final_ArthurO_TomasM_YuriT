@@ -6,6 +6,7 @@ from config import BLACK, FPS, GAME, QUIT, WIDTH, HEIGHT, IMG_DIR
 from assets import CHAO_CASTELO, MONSTRO, PERSONAGEM_PRINCIPAL, load_assets
 from sprites import Personagem, Monstro
 from scene import make
+from fade import fade
 
 def game_screen(window):
     # Variável para o ajuste de velocidade
@@ -14,6 +15,7 @@ def game_screen(window):
     assets = load_assets()
     all_sprites = pygame.sprite.Group()
     all_monstros = pygame.sprite.Group()
+    all_personagem_principal = pygame.sprite.Group()
 
     background = pygame.image.load(path.join(IMG_DIR, 'chao_castelo.png')).convert()
     background_rect = background.get_rect()
@@ -28,6 +30,7 @@ def game_screen(window):
     monstro = Monstro(img_monstro, all_walls)
 
     all_sprites.add(personagem_principal)
+    all_personagem_principal.add(personagem_principal)
     all_sprites.add(monstro)
     all_monstros.add(monstro)
 
@@ -70,6 +73,10 @@ def game_screen(window):
         all_sprites.update() #atualiza a posição do personagem e do monstro
 
         all_sprites.draw(window)
+
+        window.blit(fade(WIDTH, HEIGHT), (0,0))
+
+        all_personagem_principal.draw(window)
 
         #se o monstro bater no personagem principal ele morre e acaba o jogo
         hits = pygame.sprite.spritecollide(personagem_principal, all_monstros, False)
