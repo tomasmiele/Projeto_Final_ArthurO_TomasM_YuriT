@@ -15,6 +15,8 @@ PAREDE4 = 'parede4'
 PAREDE5 = 'parede5'
 ANIMACAO_DIREITA='animacao_direita'
 ANIMACAO_ESQUERDA='animacao_esquerda'
+PARADO='parado'
+PLAYER='player'
 
 def load_assets():
     assets = {}
@@ -22,28 +24,32 @@ def load_assets():
     #imagens
     assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR, 'castelo.png')).convert()
     assets[BOTAO_JOGAR] = pygame.image.load(os.path.join(IMG_DIR, 'botao_jogar.png')).convert_alpha()
-    assets[PERSONAGEM_PRINCIPAL] = pygame.image.load(os.path.join(IMG_DIR, 'personagem_principal.png')).convert_alpha()
-    assets[PERSONAGEM_PRINCIPAL] = pygame.transform.scale(assets[PERSONAGEM_PRINCIPAL], (PERSONAGEM_WIDTH, PERSONAGEM_HEIGHT))
+    
     assets[MONSTRO] = pygame.image.load(os.path.join(IMG_DIR, 'monstro.png')).convert_alpha()
     assets[MONSTRO] = pygame.transform.scale(assets[MONSTRO], (MONSTRO_WIDTH, MONSTRO_HEIGHT))
     assets[CHAO_CASTELO] = pygame.image.load(os.path.join(IMG_DIR, 'chao_castelo.png')).convert()
     assets[CHAO_CASTELO] = pygame.transform.scale(assets[CHAO_CASTELO], (WIDTH, HEIGHT))
+
+    #Estados do personagem
+
+    assets[PARADO] = pygame.image.load(os.path.join(IMG_DIR, 'parado.png')).convert_alpha()
+    assets[PARADO] = pygame.transform.scale(assets[PARADO], (PERSONAGEM_WIDTH, PERSONAGEM_HEIGHT))
 
     #animação de andar
     animacao_direita = []
     for i in range(8):
         # Os arquivos de animação são numerados de 00 a 08
         filename = os.path.join(IMG_DIR, '{}.png'.format(i))
-        img = pygame.image.load(filename).convert()
+        img = pygame.image.load(filename).convert_alpha()
         img = pygame.transform.scale(img, (18, 23))
         animacao_direita.append(img)
     assets[ANIMACAO_DIREITA] = animacao_direita
-
+    
     animacao_esquerda = []
     for i in range(8):
         # Os arquivos de animação são numerados de 00 a 08
         filename = os.path.join(IMG_DIR, 'esquerda{}.png'.format(i))
-        img = pygame.image.load(filename).convert()
+        img = pygame.image.load(filename).convert_alpha()
         img = pygame.transform.scale(img, (18, 23))
         animacao_esquerda.append(img)
     assets[ANIMACAO_ESQUERDA] = animacao_esquerda
