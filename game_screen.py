@@ -47,6 +47,12 @@ def game_screen(window):
         window.fill(BLACK)
         window.blit(assets[CHAO_CASTELO], background_rect)
 
+        #se o monstro bater no personagem principal ele morre e acaba o jogo
+        hits = pygame.sprite.spritecollide(personagem_principal, all_monstros, False)
+        if hits != []:
+            state = QUIT
+            running = False
+
         for event in pygame.event.get():
             # Verifica se foi fechado.
             if event.type == pygame.QUIT:
@@ -57,24 +63,28 @@ def game_screen(window):
                 if event.key == pygame.K_LEFT:
                     #andando=True
                     personagem_principal.speedx -= 1
-                    blackout.speedx -= 1
+                    if hits == []:
+                        blackout.speedx -= 1
                     #while andando==True:
 
                     personagem_principal.esquerdo(assets[ANIMACAO_ESQUERDA])
                 if event.key == pygame.K_RIGHT:
                     personagem_principal.speedx += 1
-                    blackout.speedx += 1
+                    if hits == []:
+                        blackout.speedx += 1
                     #andando=True
                     #while andando==True:
 
                     personagem_principal.direita(assets[ANIMACAO_DIREITA])
                 if event.key == pygame.K_UP:
                     personagem_principal.speedy -= 1
-                    blackout.speedy -= 1
+                    if hits == []:
+                        blackout.speedy -= 1
 
                 if event.key == pygame.K_DOWN:
                     personagem_principal.speedy += 1
-                    blackout.speedy += 1
+                    if hits == []:
+                        blackout.speedy += 1
             # Verifica se soltou alguma tecla.
             if event.type == pygame.KEYUP:
             # Dependendo da tecla, altera a velocidade.
@@ -94,19 +104,13 @@ def game_screen(window):
                     personagem_principal.speedy = 0
                     blackout.speedy = 0
 
-                if event.key == pygame.K_DOWN and personagem_principal.speedy != 0:
+                if event.key == pygame.K_DOWN:
                     personagem_principal.speedy = 0
-                    blackout.speedx = 0
+                    blackout.speedy = 0
         
         all_sprites.update() #atualiza a posição do personagem e do monstro
 
         all_sprites.draw(window)
-
-        #se o monstro bater no personagem principal ele morre e acaba o jogo
-        hits = pygame.sprite.spritecollide(personagem_principal, all_monstros, False)
-        if hits != []:
-            state = QUIT
-            running = False
 
         all_personagem_principal.draw(window)
 
