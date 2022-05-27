@@ -7,6 +7,8 @@ SND_DIR = path.join(path.dirname(__file__), 'assets','Sound')
 WIDTH = 1200
 HEIGHT = 600
 FPS = 30
+BLACKOUT_WIDTH = 2400
+BLACKOUT_HEIGHT = 1200
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)

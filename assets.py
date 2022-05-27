@@ -1,6 +1,6 @@
 import pygame
 import os
-from config import HEIGHT, IMG_DIR, SND_DIR, PERSONAGEM_WIDTH, MONSTRO_WIDTH, PERSONAGEM_HEIGHT, MONSTRO_HEIGHT, WIDTH
+from config import HEIGHT, IMG_DIR, SND_DIR, PERSONAGEM_WIDTH, MONSTRO_WIDTH, PERSONAGEM_HEIGHT, MONSTRO_HEIGHT, WIDTH, BLACKOUT_WIDTH, BLACKOUT_HEIGHT
 
 SWOOSH_SOUND =  'swoosh_sound'
 BACKGROUND = 'background'
@@ -13,10 +13,11 @@ PAREDE2 = 'parede2'
 PAREDE3 = 'parede3'
 PAREDE4 = 'parede4'
 PAREDE5 = 'parede5'
-ANIMACAO_DIREITA='animacao_direita'
-ANIMACAO_ESQUERDA='animacao_esquerda'
-PARADO='parado'
-PLAYER='player'
+ANIMACAO_DIREITA = 'animacao_direita'
+ANIMACAO_ESQUERDA = 'animacao_esquerda'
+PARADO=  'parado'
+PLAYER=  'player'
+BLACKOUT = 'blackout'
 
 def load_assets():
     assets = {}
@@ -29,6 +30,8 @@ def load_assets():
     assets[MONSTRO] = pygame.transform.scale(assets[MONSTRO], (MONSTRO_WIDTH, MONSTRO_HEIGHT))
     assets[CHAO_CASTELO] = pygame.image.load(os.path.join(IMG_DIR, 'chao_castelo.png')).convert()
     assets[CHAO_CASTELO] = pygame.transform.scale(assets[CHAO_CASTELO], (WIDTH, HEIGHT))
+    assets[BLACKOUT] = pygame.image.load(os.path.join(IMG_DIR, 'Blackout.png')).convert()
+    assets[BLACKOUT] = pygame.transform.scale(assets[BLACKOUT], (BLACKOUT_WIDTH, BLACKOUT_HEIGHT))
 
     #Estados do personagem
 

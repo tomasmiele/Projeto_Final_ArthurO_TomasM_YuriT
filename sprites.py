@@ -55,7 +55,6 @@ class Personagem(pygame.sprite.Sprite):
         self.currentsprite+=1
         if self.currentsprite>7:
             self.currentsprite=0
-        
         self.image=anim[self.currentsprite]
 
     def update(self):
@@ -151,3 +150,19 @@ class Wall(pygame.sprite.Sprite):
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
+
+class Blackout(pygame.sprite.Sprite):
+    def __init__(self, x, y, image):
+        # Construtor da classe mãe (Sprite).
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = image
+        self.rect = self.image.get_rect()
+        self.rect.center = (x, y)
+        self.speedx = 0
+        self.speedy = 0
+
+    def update(self):
+        # Atualização da posição do personagem
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy

@@ -3,8 +3,8 @@ from sympy import Q
 from mapa import matriz
 from os import path
 from config import BLACK, FPS, GAME, QUIT, WHITE, WIDTH, HEIGHT, IMG_DIR
-from assets import ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, CHAO_CASTELO, MONSTRO, PARADO, load_assets
-from sprites import Personagem, Monstro
+from assets import ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BLACKOUT, CHAO_CASTELO, MONSTRO, PARADO, load_assets
+from sprites import Blackout, Personagem, Monstro
 from scene import make
 
 def game_screen(window):
@@ -27,12 +27,16 @@ def game_screen(window):
     personagem_principal = Personagem(575, 562, img_personagem_principal, all_walls)
     img_monstro = assets[MONSTRO]
     monstro = Monstro(img_monstro, all_walls)
+    img_blackout = assets[BLACKOUT]
+    blackout = Blackout(575, 562, img_blackout)
 
     all_sprites.add(personagem_principal)
     all_personagem_principal.add(personagem_principal)
 
     all_sprites.add(monstro)
     all_monstros.add(monstro)
+
+    all_sprites.add(blackout)
 
     for s in all_walls.sprites():
         all_sprites.add(s)
@@ -53,39 +57,46 @@ def game_screen(window):
                 if event.key == pygame.K_LEFT:
                     #andando=True
                     personagem_principal.speedx -= 1
+                    blackout.speedx -= 1
                     #while andando==True:
+
                     personagem_principal.esquerdo(assets[ANIMACAO_ESQUERDA])
-
-                    
-
                 if event.key == pygame.K_RIGHT:
                     personagem_principal.speedx += 1
+                    blackout.speedx += 1
                     #andando=True
                     #while andando==True:
-                    personagem_principal.direita(assets[ANIMACAO_DIREITA])
 
+                    personagem_principal.direita(assets[ANIMACAO_DIREITA])
                 if event.key == pygame.K_UP:
                     personagem_principal.speedy -= 1
+                    blackout.speedy -= 1
+
                 if event.key == pygame.K_DOWN:
                     personagem_principal.speedy += 1
+                    blackout.speedy += 1
             # Verifica se soltou alguma tecla.
             if event.type == pygame.KEYUP:
             # Dependendo da tecla, altera a velocidade.
-                if event.key == pygame.K_LEFT and personagem_principal.speedx != 0:
-                    personagem_principal.speedx += 1
+                if event.key == pygame.K_LEFT:
+                    personagem_principal.speedx = 0
+                    blackout.speedx = 0
                     #andando=False
                     personagem_principal.parar(assets[PARADO])
 
-                if event.key == pygame.K_RIGHT and personagem_principal.speedx != 0:
-                    personagem_principal.speedx -= 1
+                if event.key == pygame.K_RIGHT:
+                    personagem_principal.speedx = 0
+                    blackout.speedx = 0
                     #andando=False
                     personagem_principal.parar(assets[PARADO])
 
-                if event.key == pygame.K_UP and personagem_principal.speedy != 0:
-                    personagem_principal.speedy += 1
+                if event.key == pygame.K_UP:
+                    personagem_principal.speedy = 0
+                    blackout.speedy = 0
 
                 if event.key == pygame.K_DOWN and personagem_principal.speedy != 0:
-                    personagem_principal.speedy -= 1
+                    personagem_principal.speedy = 0
+                    blackout.speedx = 0
         
         all_sprites.update() #atualiza a posição do personagem e do monstro
 
@@ -96,6 +107,8 @@ def game_screen(window):
         if hits != []:
             state = QUIT
             running = False
+
+        all_personagem_principal.draw(window)
 
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
