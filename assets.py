@@ -44,7 +44,7 @@ def load_assets():
         # Os arquivos de animação são numerados de 00 a 08
         filename = os.path.join(IMG_DIR, '{}.png'.format(i))
         img = pygame.image.load(filename).convert_alpha()
-        img = pygame.transform.scale(img, (18, 23))
+        img = pygame.transform.scale(img, (PERSONAGEM_WIDTH, PERSONAGEM_HEIGHT))
         animacao_direita.append(img)
     assets[ANIMACAO_DIREITA] = animacao_direita
     
@@ -53,7 +53,7 @@ def load_assets():
         # Os arquivos de animação são numerados de 00 a 08
         filename = os.path.join(IMG_DIR, 'esquerda{}.png'.format(i))
         img = pygame.image.load(filename).convert_alpha()
-        img = pygame.transform.scale(img, (18, 23))
+        img = pygame.transform.scale(img, (PERSONAGEM_WIDTH, PERSONAGEM_HEIGHT))
         animacao_esquerda.append(img)
     assets[ANIMACAO_ESQUERDA] = animacao_esquerda
 
