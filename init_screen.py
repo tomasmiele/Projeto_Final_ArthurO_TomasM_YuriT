@@ -3,19 +3,19 @@ from matplotlib.pyplot import draw
 import pygame
 import random
 from os import path
-from config import BLACK, FPS, IMG_DIR, WIDTH, HEIGHT, INIT, GAME, QUIT
-from assets import BOTAO_JOGAR, load_assets
+from config import BLACK, BOTAO_HEIGHT, BOTAO_WIDTH, FPS, IMG_DIR, WIDTH, HEIGHT, INIT, GAME, QUIT
+from assets import BACKGROUND, BOTAO_JOGAR, load_assets
 from sprites import Button
 
 def init_screen(window):
+    assets = load_assets()
 
     # Carrega o fundo da tela inicial
-    background = pygame.image.load(path.join(IMG_DIR, 'castelo.png')).convert()
+    background = assets[BACKGROUND]
     background_rect = background.get_rect()
 
-    assets = load_assets()
     img_botao = assets[BOTAO_JOGAR]
-    botao = Button(488, 258, img_botao, 0.5)
+    botao = Button(WIDTH/2-200, HEIGHT/2-100, img_botao, 0.5)
 
     running = True
     while running:

@@ -1,6 +1,6 @@
 import pygame
 import os
-from config import HEIGHT, IMG_DIR, SND_DIR, PERSONAGEM_WIDTH, MONSTRO_WIDTH, PERSONAGEM_HEIGHT, MONSTRO_HEIGHT, WIDTH, BLACKOUT_WIDTH, BLACKOUT_HEIGHT
+from config import BOTAO_HEIGHT, BOTAO_WIDTH, HEIGHT, IMG_DIR, SND_DIR, PERSONAGEM_WIDTH, MONSTRO_WIDTH, PERSONAGEM_HEIGHT, MONSTRO_HEIGHT, WIDTH, BLACKOUT_WIDTH, BLACKOUT_HEIGHT
 
 SWOOSH_SOUND =  'swoosh_sound'
 BACKGROUND = 'background'
@@ -24,8 +24,9 @@ def load_assets():
 
     #imagens
     assets[BACKGROUND] = pygame.image.load(os.path.join(IMG_DIR, 'castelo.png')).convert()
+    assets[BACKGROUND] = pygame.transform.scale(assets[BACKGROUND], (WIDTH, HEIGHT))
     assets[BOTAO_JOGAR] = pygame.image.load(os.path.join(IMG_DIR, 'botao_jogar.png')).convert_alpha()
-    
+    assets[BOTAO_JOGAR] = pygame.transform.scale(assets[BOTAO_JOGAR], (BOTAO_WIDTH, BOTAO_HEIGHT))
     assets[MONSTRO] = pygame.image.load(os.path.join(IMG_DIR, 'monstro.png')).convert_alpha()
     assets[MONSTRO] = pygame.transform.scale(assets[MONSTRO], (MONSTRO_WIDTH, MONSTRO_HEIGHT))
     assets[CHAO_CASTELO] = pygame.image.load(os.path.join(IMG_DIR, 'chao_castelo.png')).convert()
