@@ -30,7 +30,7 @@ def load_assets():
     assets[MONSTRO] = pygame.transform.scale(assets[MONSTRO], (MONSTRO_WIDTH, MONSTRO_HEIGHT))
     assets[CHAO_CASTELO] = pygame.image.load(os.path.join(IMG_DIR, 'chao_castelo.png')).convert()
     assets[CHAO_CASTELO] = pygame.transform.scale(assets[CHAO_CASTELO], (WIDTH, HEIGHT))
-    assets[BLACKOUT] = pygame.image.load(os.path.join(IMG_DIR, 'Blackout.png')).convert()
+    assets[BLACKOUT] = pygame.image.load(os.path.join(IMG_DIR, 'Blackout.png')).convert_alpha()
     assets[BLACKOUT] = pygame.transform.scale(assets[BLACKOUT], (BLACKOUT_WIDTH, BLACKOUT_HEIGHT))
 
     #Estados do personagem

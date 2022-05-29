@@ -61,54 +61,37 @@ def game_screen(window):
             if event.type == pygame.KEYDOWN:
             # Dependendo da tecla, altera a velocidade.
                 if event.key == pygame.K_LEFT:
-                    #andando=True
                     personagem_principal.speedx -= 1
-                    if hits == []:
-                        blackout.speedx -= 1
-                    #while andando==True:
 
                     personagem_principal.esquerdo(assets[ANIMACAO_ESQUERDA])
                 if event.key == pygame.K_RIGHT:
                     personagem_principal.speedx += 1
-                    if hits == []:
-                        blackout.speedx += 1
-                    #andando=True
-                    #while andando==True:
 
                     personagem_principal.direita(assets[ANIMACAO_DIREITA])
                 if event.key == pygame.K_UP:
                     personagem_principal.speedy -= 1
-                    if hits == []:
-                        blackout.speedy -= 1
 
                 if event.key == pygame.K_DOWN:
                     personagem_principal.speedy += 1
-                    if hits == []:
-                        blackout.speedy += 1
+            
             # Verifica se soltou alguma tecla.
             if event.type == pygame.KEYUP:
-            # Dependendo da tecla, altera a velocidade.
+
                 if event.key == pygame.K_LEFT:
                     personagem_principal.speedx = 0
-                    blackout.speedx = 0
-                    #andando=False
                     personagem_principal.parar(assets[PARADO])
 
                 if event.key == pygame.K_RIGHT:
                     personagem_principal.speedx = 0
-                    blackout.speedx = 0
-                    #andando=False
                     personagem_principal.parar(assets[PARADO])
 
                 if event.key == pygame.K_UP:
                     personagem_principal.speedy = 0
-                    blackout.speedy = 0
 
                 if event.key == pygame.K_DOWN:
                     personagem_principal.speedy = 0
-                    blackout.speedy = 0
         
-        all_sprites.update() #atualiza a posição do personagem e do monstro
+        all_sprites.update(personagem_principal) #atualiza a posição do personagem e do monstro
 
         all_sprites.draw(window)
 
