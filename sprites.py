@@ -1,4 +1,5 @@
 from curses import window
+import time
 import random
 from matplotlib import image
 import pygame

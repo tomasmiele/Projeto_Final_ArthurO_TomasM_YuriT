@@ -38,6 +38,12 @@ def game_screen(window):
 
     all_sprites.add(blackout)
 
+    esq_pressionado=False #usado na animação
+
+    dir_pressionado=False #usado na animação
+
+    relogio=0 #usado na velocidade da animação
+
     for s in all_walls.sprites():
         all_sprites.add(s)
     
@@ -62,12 +68,12 @@ def game_screen(window):
             # Dependendo da tecla, altera a velocidade.
                 if event.key == pygame.K_LEFT:
                     personagem_principal.speedx -= 1
+                    esq_pressionado=True
 
-                    personagem_principal.esquerdo(assets[ANIMACAO_ESQUERDA])
                 if event.key == pygame.K_RIGHT:
                     personagem_principal.speedx += 1
+                    dir_pressionado=True
 
-                    personagem_principal.direita(assets[ANIMACAO_DIREITA])
                 if event.key == pygame.K_UP:
                     personagem_principal.speedy -= 1
 
@@ -79,10 +85,12 @@ def game_screen(window):
 
                 if event.key == pygame.K_LEFT:
                     personagem_principal.speedx = 0
+                    esq_pressionado=False
                     personagem_principal.parar(assets[PARADO])
 
                 if event.key == pygame.K_RIGHT:
                     personagem_principal.speedx = 0
+                    dir_pressionado=False
                     personagem_principal.parar(assets[PARADO])
 
                 if event.key == pygame.K_UP:
@@ -91,6 +99,12 @@ def game_screen(window):
                 if event.key == pygame.K_DOWN:
                     personagem_principal.speedy = 0
         
+        if esq_pressionado==True:
+            personagem_principal.esquerdo(assets[ANIMACAO_ESQUERDA])
+
+        if dir_pressionado==True:
+            personagem_principal.direita(assets[ANIMACAO_DIREITA])
+
         all_sprites.update(personagem_principal) #atualiza a posição do personagem e do monstro
 
         all_sprites.draw(window)
