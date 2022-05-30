@@ -96,6 +96,9 @@ class Monstro(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         x = random.randint(40, WIDTH - 40)
         y = random.randint(40, HEIGHT - 40)
+        if 570 <= x <= 580 or 557 <= y <= 567:
+            x = 575
+            y = 5
         self.rect.topleft = (x, y)
         self.speedx = random.randint(-1, 1)
         self.speedy = random.randint(-1, 1)
