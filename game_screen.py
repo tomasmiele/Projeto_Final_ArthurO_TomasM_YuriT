@@ -4,7 +4,7 @@ from mapa import matriz
 from os import path
 from config import BLACK, FPS, GAME, QUIT, WHITE, WIDTH, HEIGHT, IMG_DIR
 from assets import ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BLACKOUT, CHAO_CASTELO, MONSTRO, PARADO, load_assets, CHAVE
-from sprites import Blackout, Personagem, Monstro, Chave
+from sprites import Blackout, Personagem, Monstro, Chave, Pontos
 from scene import make
 from posicoes_chave import posicoes
 
@@ -17,6 +17,7 @@ def game_screen(window):
     all_chaves = pygame.sprite.Group()
     all_monstros = pygame.sprite.Group()
     all_personagem_principal = pygame.sprite.Group()
+    all_pontos_chaves = pygame.sprite.Group()
 
     background = pygame.image.load(path.join(IMG_DIR, 'chao_castelo.png')).convert()
     background_rect = background.get_rect()
@@ -37,7 +38,7 @@ def game_screen(window):
         chave = Chave(img_chave, posicoes)
         all_sprites.add(chave)
         all_chaves.add(chave)
-    pontos=0
+    pontos = 0
     
 
     all_sprites.add(personagem_principal)
@@ -69,9 +70,9 @@ def game_screen(window):
             state = QUIT
             running = False
 
-        hit = pygame.sprite.spritecollide(personagem_principal, all_chaves, False)
+        hit = pygame.sprite.spritecollide(personagem_principal, all_chaves, True)
         if hit != []:
-            pontos+=1
+            pontos += 1
 
         for event in pygame.event.get():
             # Verifica se foi fechado.
@@ -134,6 +135,13 @@ def game_screen(window):
 
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
+
+        x = 10
+        for i in range(pontos):
+            ponto_chave = Pontos(img_chave, x, 570)
+            all_pontos_chaves.add(ponto_chave)
+            x += 40
+        all_pontos_chaves.draw(window)
 
         pygame.display.update() # Mostra o novo frame para o jogador
     return state

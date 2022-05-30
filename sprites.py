@@ -188,3 +188,10 @@ class Chave(pygame.sprite.Sprite):
         collisions = pygame.sprite.spritecollide(self, personagem2, True)
         for collision in collisions:
             if '''
+
+class Pontos(pygame.sprite.Sprite):
+    def __init__(self, image, x, y):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = image
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x, y)
