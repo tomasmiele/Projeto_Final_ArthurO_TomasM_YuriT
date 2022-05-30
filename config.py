@@ -6,7 +6,7 @@ SND_DIR = path.join(path.dirname(__file__), 'assets','Sound')
 
 WIDTH = 1200
 HEIGHT = 600
-FPS = 60
+FPS = 30
 BLACKOUT_WIDTH = 2400
 BLACKOUT_HEIGHT = 1200
 BOTAO_WIDTH=200

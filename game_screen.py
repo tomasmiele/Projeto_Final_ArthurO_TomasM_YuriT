@@ -14,6 +14,7 @@ def game_screen(window):
 
     assets = load_assets()
     all_sprites = pygame.sprite.Group()
+    all_chaves = pygame.sprite.Group()
     all_monstros = pygame.sprite.Group()
     all_personagem_principal = pygame.sprite.Group()
 
@@ -29,11 +30,15 @@ def game_screen(window):
     img_monstro = assets[MONSTRO]
     monstro = Monstro(img_monstro, all_walls)
     img_blackout = assets[BLACKOUT]
-    blackout = Blackout(575, 562, img_blackout)
+    #blackout = Blackout(575, 562, img_blackout)
     img_chave = assets[CHAVE]
+    
     for i in range (4):
         chave = Chave(img_chave, posicoes)
         all_sprites.add(chave)
+        all_chaves.add(chave)
+    pontos=0
+    
 
     all_sprites.add(personagem_principal)
     all_personagem_principal.add(personagem_principal)
@@ -41,7 +46,7 @@ def game_screen(window):
     all_sprites.add(monstro)
     all_monstros.add(monstro)
 
-    all_sprites.add(blackout)
+    # all_sprites.add(blackout) 
 
     esq_pressionado=False #usado na animação
 
@@ -63,6 +68,10 @@ def game_screen(window):
         if hits != []:
             state = QUIT
             running = False
+
+        hit = pygame.sprite.spritecollide(personagem_principal, all_chaves, False)
+        if hit != []:
+            pontos+=1
 
         for event in pygame.event.get():
             # Verifica se foi fechado.
@@ -103,10 +112,12 @@ def game_screen(window):
 
                 if event.key == pygame.K_UP:
                     dir_pressionado=False
+                    personagem_principal.parar(assets[PARADO])
                     personagem_principal.speedy = 0
 
                 if event.key == pygame.K_DOWN:
                     dir_pressionado=False
+                    personagem_principal.parar(assets[PARADO])
                     personagem_principal.speedy = 0
         
         if esq_pressionado==True:

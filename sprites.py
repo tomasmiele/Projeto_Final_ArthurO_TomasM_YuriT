@@ -183,3 +183,8 @@ class Chave(pygame.sprite.Sprite):
         lista.remove(posicao)
         self.rect = self.image.get_rect()
         self.rect.topleft = (self.x, self.y)
+    '''
+    def update(self,personagem2):
+        collisions = pygame.sprite.spritecollide(self, personagem2, True)
+        for collision in collisions:
+            if '''
