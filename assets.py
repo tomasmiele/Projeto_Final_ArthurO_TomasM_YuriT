@@ -1,6 +1,6 @@
 import pygame
 import os
-from config import BOTAO_HEIGHT, BOTAO_WIDTH, HEIGHT, IMG_DIR, SND_DIR, PERSONAGEM_WIDTH, MONSTRO_WIDTH, PERSONAGEM_HEIGHT, MONSTRO_HEIGHT, WIDTH, BLACKOUT_WIDTH, BLACKOUT_HEIGHT
+from config import BOTAO_HEIGHT, BOTAO_WIDTH, HEIGHT, IMG_DIR, SND_DIR, PERSONAGEM_WIDTH, MONSTRO_WIDTH, PERSONAGEM_HEIGHT, MONSTRO_HEIGHT, WIDTH, BLACKOUT_WIDTH, BLACKOUT_HEIGHT, CHAVE_WIDTH, CHAVE_HEIGHT
 
 SWOOSH_SOUND =  'swoosh_sound'
 BACKGROUND = 'background'
@@ -18,6 +18,7 @@ ANIMACAO_ESQUERDA = 'animacao_esquerda'
 PARADO=  'parado'
 PLAYER=  'player'
 BLACKOUT = 'blackout'
+CHAVE = 'chave'
 
 def load_assets():
     assets = {}
@@ -33,6 +34,8 @@ def load_assets():
     assets[CHAO_CASTELO] = pygame.transform.scale(assets[CHAO_CASTELO], (WIDTH, HEIGHT))
     assets[BLACKOUT] = pygame.image.load(os.path.join(IMG_DIR, 'Blackout.png')).convert_alpha()
     assets[BLACKOUT] = pygame.transform.scale(assets[BLACKOUT], (BLACKOUT_WIDTH, BLACKOUT_HEIGHT))
+    assets[CHAVE] = pygame.image.load(os.path.join(IMG_DIR, 'chave.png')).convert_alpha()
+    assets[CHAVE] = pygame.transform.scale(assets[CHAVE], (CHAVE_WIDTH, CHAVE_HEIGHT))
 
     #Estados do personagem
 

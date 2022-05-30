@@ -171,3 +171,15 @@ class Blackout(pygame.sprite.Sprite):
 
         self.rect.x = personagem2.rect.x-1188
         self.rect.y = personagem2.rect.y-585
+
+class Chave(pygame.sprite.Sprite):
+    def __init__(self, image, lista):
+        pygame.sprite.Sprite.__init__(self)
+
+        self.image = image
+        posicao = lista[random.randint(0, len(lista) - 1)]
+        self.x = posicao[0]
+        self.y = posicao[1]
+        lista.remove(posicao)
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (self.x, self.y)

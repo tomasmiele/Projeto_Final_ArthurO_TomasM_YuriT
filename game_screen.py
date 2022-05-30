@@ -3,9 +3,10 @@ from sympy import Q
 from mapa import matriz
 from os import path
 from config import BLACK, FPS, GAME, QUIT, WHITE, WIDTH, HEIGHT, IMG_DIR
-from assets import ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BLACKOUT, CHAO_CASTELO, MONSTRO, PARADO, load_assets
-from sprites import Blackout, Personagem, Monstro
+from assets import ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BLACKOUT, CHAO_CASTELO, MONSTRO, PARADO, load_assets, CHAVE
+from sprites import Blackout, Personagem, Monstro, Chave
 from scene import make
+from posicoes_chave import posicoes
 
 def game_screen(window):
     # Variável para o ajuste de velocidade
@@ -29,6 +30,10 @@ def game_screen(window):
     monstro = Monstro(img_monstro, all_walls)
     img_blackout = assets[BLACKOUT]
     blackout = Blackout(575, 562, img_blackout)
+    img_chave = assets[CHAVE]
+    for i in range (4):
+        chave = Chave(img_chave, posicoes)
+        all_sprites.add(chave)
 
     all_sprites.add(personagem_principal)
     all_personagem_principal.add(personagem_principal)
