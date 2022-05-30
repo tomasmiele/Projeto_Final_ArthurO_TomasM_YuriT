@@ -66,19 +66,22 @@ def game_screen(window):
                 running = False
             if event.type == pygame.KEYDOWN:
             # Dependendo da tecla, altera a velocidade.
-                if event.key == pygame.K_LEFT:
-                    personagem_principal.speedx -= 1
-                    esq_pressionado=True
-
+                
                 if event.key == pygame.K_RIGHT:
                     personagem_principal.speedx += 1
-                    dir_pressionado=True
+                    dir_pressionado=True #animação de andar para direita
 
-                if event.key == pygame.K_UP:
+                if event.key == pygame.K_UP :
                     personagem_principal.speedy -= 1
+                    dir_pressionado=True #animação de andar para direita
 
-                if event.key == pygame.K_DOWN:
+                if event.key == pygame.K_DOWN :
                     personagem_principal.speedy += 1
+                    dir_pressionado=True #animação de andar para direita
+
+                if event.key == pygame.K_LEFT :
+                    personagem_principal.speedx -= 1
+                    esq_pressionado=True
             
             # Verifica se soltou alguma tecla.
             if event.type == pygame.KEYUP:
@@ -94,9 +97,11 @@ def game_screen(window):
                     personagem_principal.parar(assets[PARADO])
 
                 if event.key == pygame.K_UP:
+                    dir_pressionado=False
                     personagem_principal.speedy = 0
 
                 if event.key == pygame.K_DOWN:
+                    dir_pressionado=False
                     personagem_principal.speedy = 0
         
         if esq_pressionado==True:

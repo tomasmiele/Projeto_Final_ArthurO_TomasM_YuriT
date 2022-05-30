@@ -48,13 +48,13 @@ class Personagem(pygame.sprite.Sprite):
 
     def direita(self,anim):
         self.currentsprite+=1
-        if self.currentsprite>7:
+        if self.currentsprite>len(anim)-1:
             self.currentsprite=0
         self.image=anim[self.currentsprite]
     
     def esquerdo(self,anim):
         self.currentsprite+=1
-        if self.currentsprite>7:
+        if self.currentsprite>len(anim)-1:
             self.currentsprite=0
         self.image=anim[self.currentsprite]
 
