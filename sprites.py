@@ -78,14 +78,14 @@ class Personagem(pygame.sprite.Sprite):
         for collision in collisions:
             # Estava indo para a direita
             if self.speedx > 0:
-                self.rect.right = collision.rect.left
+                self.speedx = 0
             # Estava indo para a esquerda
             elif self.speedx < 0:
-                self.rect.left = collision.rect.right
+                self.speedx = 0
             elif self.speedy < 0:
-                self.rect.top = collision.rect.bottom
+                self.speedy = 0
             elif self.speedy > 0:
-                self.rect.bottom = collision.rect.top
+                self.speedy = 0
 
 class Monstro(pygame.sprite.Sprite):
     def __init__(self, img, paredes):
