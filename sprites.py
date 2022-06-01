@@ -102,11 +102,9 @@ class Monstro(pygame.sprite.Sprite):
             y = 5
         self.rect.topleft = (x, y)
         self.speedx = random.randint(-1, 1)
-        self.speedy = random.randint(-1, 1)
+        self.speedy = 0
         if self.speedx == 0:
             self.speedx = 1
-        if self.speedy == 0:
-            self.speedy = 1
         self.paredes = paredes
 
     def update(self,personagem2):
@@ -131,44 +129,50 @@ class Monstro(pygame.sprite.Sprite):
         #evita ele passar por cima da parede
         collisions = pygame.sprite.spritecollide(self, self.paredes, False)
         for collision in collisions:
-            if len(collisions) == 1:
-                if self.speedx > 0:
-                    self.rect.right == collision.rect.left
-                    self.speedx = -self.speedx
-                elif self.speedx < 0:
-                    self.rect.left = collision.rect.right
-                    self.speedx = -self.speedx
-                if self.speedy < 0:
-                    self.rect.top = collision.rect.bottom
-                    self.speedy = -self.speedy
-                elif self.speedy > 0:
-                    self.rect.bottom = collision.rect.top
-                    self.speedy = -self.speedy
-            else:
-                posx = int(collision.rect.x / 40)
-                posy = int(collision.rect.y / 40)
-                #if (posx + 1) != 31:
-                if matriz[int(posx + 1)][posy] == 1 or matriz[int(posx + 1)][posy] == 2 or matriz[int(posx + 1)][posy] == 3 or matriz[int(posx + 1)][posy] == 4 or matriz[int(posx + 1)][posy] == 5 or matriz[int(posx - 1)][posy] == 1 or matriz[int(posx - 1)][posy] == 2 or matriz[int(posx - 1)][posy] == 3 or matriz[int(posx - 1)][posy] == 4 or matriz[int(posx - 1)][posy] == 5:
-                    if self.speedy < 0:
-                        self.rect.top = collision.rect.bottom
-                        self.speedy = -self.speedy
-                    elif self.speedy > 0:
-                        self.rect.bottom = collision.rect.top
-                        self.speedy = -self.speedy
-                #elif (posx + 1) == 31:
-                 #   if self.speedy < 0:
-                  #      self.rect.top = collision.rect.bottom
-                   #     self.speedy = -self.speedy
-                    #elif self.speedy > 0:
-                     #   self.rect.bottom = collision.rect.top
-                      #  self.speedy = -self.speedy
-                elif matriz[posx][int(posy + 1)] == 1 or matriz[posx][int(posy + 1)] == 2 or matriz[posx][int(posy + 1)] == 3 or matriz[posx][int(posy + 1)] == 4 or matriz[posx][int(posy + 1)] == 5 or matriz[posx][int(posy - 1)] == 1 or matriz[posx][int(posy - 1)] == 2 or matriz[posx][int(posy - 1)] == 3 or matriz[posx][int(posy - 1)] == 4 or matriz[posx][int(posy - 1)] == 5:
-                    if self.speedx > 0:
-                        self.rect.right == collision.rect.left
-                        self.speedx = -self.speedx
-                    elif self.speedx < 0:
-                        self.rect.left = collision.rect.right
-                        self.speedx = -self.speedx
+            posx = int(collision.rect.x / 40)
+            posy = int(collision.rect.y / 40)
+            if self.speedx == -1:
+                if matriz[int(posx - 1)][int(posy + 1)] == 0:
+                    self.speedx = 0
+                    self.speedy = 1
+                elif matriz[int(posx - 1)][int(posy - 1)] == 0:
+                    self.speedx = 0
+                    self.speedy = -1
+                else:
+                    self.speedx = 1
+                    self.speedy = 0
+            elif self.speedx == 1:
+                if matriz[int(posx + 1)][int(posy + 1)] == 0:
+                    self.speedx = 0
+                    self.speedy = 1
+                elif matriz[int(posx + 1)][int(posy - 1)] == 0:
+                    self.speedx = 0
+                    self.speedy = -1
+                else:
+                    self.speedx = -1
+                    self.speedy = 0
+            elif self.speedy == 1:
+                if matriz[int(posx + 1)][int(posy - 1)] == 0:
+                    self.speedy = 0
+                    self.speedx = -1
+                elif matriz[int(posx - 1)][int(posy - 1)] == 0:
+                    self.speedy = 0
+                    self.speedx = 1
+                else:
+                    self.speedy = -1
+                    self.speedx = 0
+            elif self.speedy == -1:
+                if matriz[int(posx + 1)][int(posy + 1)] == 0:
+                    self.speedy = 0
+                    self.speedx = 1
+                elif matriz[int(posx - 1)][int(posy + 1)] == 0:
+                    self.speedy = 0
+                    self.speedx = -1
+                else:
+                    self.speedy = 1
+                    self.speedx = 0
+            
+                
 
 class Wall(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
