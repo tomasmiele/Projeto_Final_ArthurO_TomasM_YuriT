@@ -132,15 +132,17 @@ class Monstro(pygame.sprite.Sprite):
         collisions = pygame.sprite.spritecollide(self, self.paredes, False)
         for collision in collisions:
             if len(collisions) == 1:
-                # Estava indo para a direita
-                if self.rect.right > collision.rect.left:
+                if self.speedx > 0:
+                    self.rect.right == collision.rect.left
                     self.speedx = -self.speedx
-                # Estava indo para a esquerda
-                elif self.rect.left > collision.rect.right:
+                elif self.speedx < 0:
+                    self.rect.left = collision.rect.right
                     self.speedx = -self.speedx
-                elif self.rect.top > collision.rect.bottom:
+                if self.speedy < 0:
+                    self.rect.top = collision.rect.bottom
                     self.speedy = -self.speedy
-                elif self.rect.bottom > collision.rect.top:
+                elif self.speedy > 0:
+                    self.rect.bottom = collision.rect.top
                     self.speedy = -self.speedy
             else:
                 posx = int(collision.rect.x / 40)
