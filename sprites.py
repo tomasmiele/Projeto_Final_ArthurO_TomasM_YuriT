@@ -95,22 +95,21 @@ class Monstro(pygame.sprite.Sprite):
 
         self.image = img
         self.rect = self.image.get_rect()
-        x = random.randint(40, WIDTH - 40)
-        y = random.randint(40, HEIGHT - 40)
-        if 570 <= x <= 580 or 557 <= y <= 567:
-            x = 575
-            y = 5
+        x = 560
+        y = 40
         self.rect.topleft = (x, y)
-        self.speedx = random.randint(-1, 1)
+        self.speedx = 1
         self.speedy = 0
-        if self.speedx == 0:
-            self.speedx = 1
         self.paredes = paredes
 
     def update(self,personagem2):
         # Atualizando a posição do monstro
         self.rect.x += self.speedx
         self.rect.y += self.speedy
+        #print(self.rect.x)
+        #print(self.rect.y)
+        #print(self.speedx)
+        #print(self.speedy)
         # Evita que o monstro passe pela tela
         # novas posições e velocidades
         if self.rect.right > WIDTH:
@@ -128,50 +127,54 @@ class Monstro(pygame.sprite.Sprite):
 
         #evita ele passar por cima da parede
         collisions = pygame.sprite.spritecollide(self, self.paredes, False)
-        for collision in collisions:
-            posx = int(collision.rect.x / 40)
-            posy = int(collision.rect.y / 40)
-            if self.speedx == -1:
-                if matriz[int(posx - 1)][int(posy + 1)] == 0:
+        if collisions != []:
+            posx = int(self.rect.x / 40)
+            posy = int(self.rect.y / 40)
+            #print(posx)
+            #print(posy)
+            print(matriz[posx][int(posy + 1)])
+            print(matriz[posx][int(posy - 1)])
+            #if len(collisions) == 1:
+            if self.speedx == 1:
+                if matriz[posx][int(posy + 1)] == 0:
                     self.speedx = 0
                     self.speedy = 1
-                elif matriz[int(posx - 1)][int(posy - 1)] == 0:
+                elif matriz[posx][int(posy - 1)] == 0:
                     self.speedx = 0
                     self.speedy = -1
-                else:
+                elif matriz[int(posx - 1)][posy] == 0:
+                    self.speedx = -1
+                    self.speedy = 0
+            elif self.speedx == -1:
+                if matriz[posx][int(posy + 1)] == 0:
+                    self.speedx = 0
+                    self.speedy = 1
+                elif matriz[posx][int(posy - 1)] == 0:
+                    self.speedx = 0
+                    self.speedy = -1
+                elif matriz[int(posx + 1)][posy] == 0:
                     self.speedx = 1
                     self.speedy = 0
-            elif self.speedx == 1:
-                if matriz[int(posx + 1)][int(posy + 1)] == 0:
-                    self.speedx = 0
-                    self.speedy = 1
-                elif matriz[int(posx + 1)][int(posy - 1)] == 0:
-                    self.speedx = 0
-                    self.speedy = -1
-                else:
-                    self.speedx = -1
-                    self.speedy = 0
             elif self.speedy == 1:
-                if matriz[int(posx + 1)][int(posy - 1)] == 0:
+                if matriz[int(posx - 1)][posy] == 0:
                     self.speedy = 0
                     self.speedx = -1
-                elif matriz[int(posx - 1)][int(posy - 1)] == 0:
+                elif matriz[int(posx + 1)][posy] == 0:
                     self.speedy = 0
                     self.speedx = 1
                 else:
                     self.speedy = -1
                     self.speedx = 0
             elif self.speedy == -1:
-                if matriz[int(posx + 1)][int(posy + 1)] == 0:
-                    self.speedy = 0
-                    self.speedx = 1
-                elif matriz[int(posx - 1)][int(posy + 1)] == 0:
+                if matriz[int(posx - 1)][posy] == 0:
                     self.speedy = 0
                     self.speedx = -1
+                elif matriz[int(posx + 1)][posy] == 0:
+                    self.speedy = 0
+                    self.speedx = 1
                 else:
                     self.speedy = 1
                     self.speedx = 0
-            
                 
 
 class Wall(pygame.sprite.Sprite):
