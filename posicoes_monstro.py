@@ -6,6 +6,10 @@ for i in range(40):
 print(lista_mov)"""
 
 lista_mov=[]
+lista_mov2=[]
+lista_mov3=[]
+lista_mov4=[]
+lista_mov5=[]
 
 def monstro_esquerda(l):
     for i in range(40):
@@ -100,4 +104,92 @@ for i in range(2):
 for i in range(2):
     monstro_esquerda(lista_mov)
 
-print(lista_mov)
+###monstro 2###
+
+for i in range(8):
+    monstro_esquerda(lista_mov2)
+
+for i in range(4):
+    monstro_baixo(lista_mov2)
+
+for i in range(2):
+    monstro_direita(lista_mov2)
+
+for i in range(2):
+    monstro_baixo(lista_mov2)
+
+for i in range(2):
+    monstro_direita(lista_mov2)
+
+for i in range(2):
+    monstro_cima(lista_mov2)
+
+for i in range(2):
+    monstro_direita(lista_mov2)
+
+for i in range(3):
+    monstro_baixo(lista_mov2)
+
+for i in range(2):
+    monstro_direita(lista_mov2)
+
+for i in range(5):
+    monstro_cima(lista_mov2)
+
+
+for i in range(5):
+    monstro_baixo(lista_mov2)
+
+for i in range(2):
+    monstro_esquerda(lista_mov2)
+
+for i in range(3):
+    monstro_cima(lista_mov2)
+
+for i in range(2):
+    monstro_esquerda(lista_mov2)
+
+for i in range(2):
+    monstro_baixo(lista_mov2)
+
+for i in range(2):
+    monstro_esquerda(lista_mov2)
+
+for i in range(2):
+    monstro_cima(lista_mov2)
+
+for i in range(2):
+    monstro_esquerda(lista_mov2)
+
+for i in range(4):
+    monstro_cima(lista_mov2)
+
+for i in range(8):
+    monstro_direita(lista_mov2)
+
+
+
+###monstro 3###
+
+for i in range(2):
+    monstro_esquerda(lista_mov3)
+
+for i in range(2):
+    monstro_direita(lista_mov3)
+
+###monstro 4###
+
+for i in range(2):
+    monstro_esquerda(lista_mov4)
+
+for i in range(2):
+    monstro_direita(lista_mov4)
+
+###monstro 5###
+
+for i in range(2):
+    monstro_esquerda(lista_mov5)
+
+for i in range(2):
+    monstro_direita(lista_mov5)
+

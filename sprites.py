@@ -89,14 +89,14 @@ class Personagem(pygame.sprite.Sprite):
                 self.speedy = 0
 
 class Monstro(pygame.sprite.Sprite):
-    def __init__(self, img, paredes):
+    def __init__(self, img, paredes,x,y):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
 
         self.image = img
         self.rect = self.image.get_rect()
-        x = 565
-        y = 40
+        #x = 565
+        #y = 40
         self.rect.topleft = (x, y)
         #self.speedx = 1
         #self.speedy = 0
