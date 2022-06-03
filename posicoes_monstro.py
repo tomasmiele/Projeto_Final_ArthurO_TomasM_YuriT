@@ -37,8 +37,67 @@ for i in range(2):
 for i in range(2):
     monstro_baixo(lista_mov)
 
+for i in range(2):
+    monstro_esquerda(lista_mov)
+
+for i in range(2):
+    monstro_baixo(lista_mov)
+
+for i in range(2):
+    monstro_esquerda(lista_mov)
+
+for i in range(2):
+    monstro_baixo(lista_mov)
+
+for i in range(2):
+    monstro_esquerda(lista_mov)
+
+for i in range(2):
+    monstro_baixo(lista_mov)
+
 for i in range(3):
     monstro_esquerda(lista_mov)
 
+for i in range(4):
+    monstro_baixo(lista_mov)
+
+for i in range(2):
+    monstro_esquerda(lista_mov)
+
+for i in range(3):
+    monstro_cima(lista_mov)
+
+for i in range(2):
+    monstro_esquerda(lista_mov)
+
+for i in range(3):
+    monstro_cima(lista_mov)
+
+for i in range(2):
+    monstro_esquerda(lista_mov)
+
+for i in range(6):
+    monstro_cima(lista_mov)
+
+for i in range(2):
+    monstro_direita(lista_mov)
+
+for i in range(4):
+    monstro_baixo(lista_mov)
+
+for i in range(8):
+    monstro_direita(lista_mov)
+
+for i in range(2):
+    monstro_cima(lista_mov)
+
+for i in range(5):
+    monstro_direita(lista_mov)
+
+for i in range(2):
+    monstro_cima(lista_mov)
+
+for i in range(2):
+    monstro_esquerda(lista_mov)
 
 print(lista_mov)

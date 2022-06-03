@@ -95,7 +95,7 @@ class Monstro(pygame.sprite.Sprite):
 
         self.image = img
         self.rect = self.image.get_rect()
-        x = 560
+        x = 565
         y = 40
         self.rect.topleft = (x, y)
         #self.speedx = 1
