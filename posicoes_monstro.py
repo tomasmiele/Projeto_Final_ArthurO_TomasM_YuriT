@@ -262,5 +262,3 @@ for i in range(4):
 
 for i in range(5):
     monstro_direita(lista_mov5)
-
-

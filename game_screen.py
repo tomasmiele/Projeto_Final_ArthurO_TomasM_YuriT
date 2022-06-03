@@ -18,6 +18,7 @@ def game_screen(window):
     all_chaves = pygame.sprite.Group()
     all_monstros = pygame.sprite.Group()
     all_personagem_principal = pygame.sprite.Group()
+    all_blackout = pygame.sprite.Group()
     all_pontos_chaves = pygame.sprite.Group()
     tempo=0
     tempo2=0
@@ -50,7 +51,7 @@ def game_screen(window):
     monstro5 = Monstro(img_monstro5, all_walls,485,40)
 
     img_blackout = assets[BLACKOUT]
-    #blackout = Blackout(575, 562, img_blackout)
+    blackout = Blackout(575, 562, img_blackout)
     img_chave = assets[CHAVE]
     
     for i in range (4):
@@ -73,7 +74,9 @@ def game_screen(window):
     all_monstros.add(monstro4)
     all_monstros.add(monstro5)
 
-    # all_sprites.add(blackout) 
+    all_sprites.add(blackout) 
+    all_blackout.add(blackout)
+
 
     esq_pressionado=False #usado na animação
 
@@ -152,6 +155,7 @@ def game_screen(window):
         monstro3.andar(lista_mov3,tempo3)
         monstro4.andar(lista_mov4,tempo4)
         monstro5.andar(lista_mov5,tempo5)
+
         tempo+=1
         tempo2+=1
         tempo3+=1
@@ -177,6 +181,8 @@ def game_screen(window):
         all_sprites.update(personagem_principal) #atualiza a posição do personagem e do monstro
 
         all_sprites.draw(window)
+
+        all_blackout.draw(window)
 
         all_personagem_principal.draw(window)
 
