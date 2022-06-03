@@ -1,10 +1,11 @@
+from numpy import False_
 import pygame
 from sympy import Q
 from mapa import matriz
 from os import path
-from config import BLACK, FPS, GAME, QUIT, WHITE, WIDTH, HEIGHT, IMG_DIR
-from assets import ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BLACKOUT, CHAO_CASTELO, MONSTRO, MONSTRO2,MONSTRO3,MONSTRO4,MONSTRO5, PARADO, load_assets, CHAVE
-from sprites import Blackout, Personagem, Monstro, Chave, Pontos
+from config import BLACK, FPS, GAME, QUIT, VITORIA, WHITE, WIDTH, HEIGHT, IMG_DIR
+from assets import ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BLACKOUT, CHAO_CASTELO, MONSTRO, MONSTRO2,MONSTRO3,MONSTRO4,MONSTRO5, PARADO, load_assets, CHAVE, PORTA
+from sprites import Blackout, Personagem, Monstro, Chave, Pontos, Porta
 from scene import make
 from posicoes_chave import posicoes
 from posicoes_monstro import lista_mov, lista_mov2,lista_mov3,lista_mov4,lista_mov5
@@ -20,6 +21,7 @@ def game_screen(window):
     all_personagem_principal = pygame.sprite.Group()
     all_blackout = pygame.sprite.Group()
     all_pontos_chaves = pygame.sprite.Group()
+    all_porta = pygame.sprite.Group()
     tempo=0
     tempo2=0
     tempo3=0
@@ -53,6 +55,12 @@ def game_screen(window):
     img_blackout = assets[BLACKOUT]
     blackout = Blackout(575, 562, img_blackout)
     img_chave = assets[CHAVE]
+
+    img_porta = assets[PORTA]
+    porta = Porta(560, 0, img_porta)
+
+    all_sprites.add(porta)
+    all_porta.add(porta)
     
     for i in range (4):
         chave = Chave(img_chave, posicoes)
@@ -102,6 +110,12 @@ def game_screen(window):
         hit = pygame.sprite.spritecollide(personagem_principal, all_chaves, True)
         if hit != []:
             pontos += 1
+
+        hit2 = pygame.sprite.spritecollide(personagem_principal, all_porta, False)
+        if hit2 != [] and pontos==4:
+            state = VITORIA        
+        
+        print(pontos)
 
         for event in pygame.event.get():
             # Verifica se foi fechado.
@@ -181,6 +195,8 @@ def game_screen(window):
         all_sprites.update(personagem_principal) #atualiza a posição do personagem e do monstro
 
         all_sprites.draw(window)
+
+        all_porta.draw(window)
 
         all_blackout.draw(window)
 

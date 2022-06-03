@@ -6,7 +6,7 @@ SND_DIR = path.join(path.dirname(__file__), 'assets','Sound')
 
 WIDTH = 1200
 HEIGHT = 600
-FPS = 30
+FPS = 60
 BLACKOUT_WIDTH = 2400
 BLACKOUT_HEIGHT = 1200
 BOTAO_WIDTH = 200
@@ -29,3 +29,4 @@ MONSTRO_HEIGHT = 30
 INIT = 0
 GAME = 1
 QUIT = 2
+VITORIA = 3

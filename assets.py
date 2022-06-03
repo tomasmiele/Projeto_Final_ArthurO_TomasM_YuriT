@@ -1,6 +1,6 @@
 import pygame
 import os
-from config import BOTAO_HEIGHT, BOTAO_WIDTH, HEIGHT, IMG_DIR, SND_DIR, PERSONAGEM_WIDTH, MONSTRO_WIDTH, PERSONAGEM_HEIGHT, MONSTRO_HEIGHT, WIDTH, BLACKOUT_WIDTH, BLACKOUT_HEIGHT, CHAVE_WIDTH, CHAVE_HEIGHT
+from config import BOTAO_HEIGHT, BOTAO_WIDTH, HEIGHT, IMG_DIR, SND_DIR, PERSONAGEM_WIDTH, MONSTRO_WIDTH, PERSONAGEM_HEIGHT, MONSTRO_HEIGHT, VITORIA, WIDTH, BLACKOUT_WIDTH, BLACKOUT_HEIGHT, CHAVE_WIDTH, CHAVE_HEIGHT
 
 SWOOSH_SOUND =  'swoosh_sound'
 BACKGROUND = 'background'
@@ -23,6 +23,8 @@ PARADO=  'parado'
 PLAYER=  'player'
 BLACKOUT = 'blackout'
 CHAVE = 'chave'
+VITORIA_BG='vitoria_bg'
+PORTA = 'porta'
 
 def load_assets():
     assets = {}
@@ -48,6 +50,9 @@ def load_assets():
     assets[BLACKOUT] = pygame.transform.scale(assets[BLACKOUT], (BLACKOUT_WIDTH, BLACKOUT_HEIGHT))
     assets[CHAVE] = pygame.image.load(os.path.join(IMG_DIR, 'chave.png')).convert_alpha()
     assets[CHAVE] = pygame.transform.scale(assets[CHAVE], (CHAVE_WIDTH, CHAVE_HEIGHT))
+    assets[VITORIA_BG] = pygame.image.load(os.path.join(IMG_DIR, 'Vitoria.png')).convert()
+    assets[VITORIA_BG] = pygame.transform.scale(assets[VITORIA_BG], (WIDTH, HEIGHT))
+    assets[PORTA] = pygame.image.load(os.path.join(IMG_DIR, 'porta.png')).convert_alpha()
 
     #Estados do personagem
 
