@@ -134,7 +134,7 @@ def game_screen(window):
         if dir_pressionado==True:
             personagem_principal.direita(assets[ANIMACAO_DIREITA])
 
-        all_sprites.update(personagem_principal,lista_mov,tempo) #atualiza a posição do personagem e do monstro
+        all_sprites.update(personagem_principal) #atualiza a posição do personagem e do monstro
 
         all_sprites.draw(window)
 

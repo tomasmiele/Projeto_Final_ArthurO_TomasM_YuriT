@@ -59,7 +59,7 @@ class Personagem(pygame.sprite.Sprite):
             self.currentsprite=0
         self.image=anim[self.currentsprite]
 
-    def update(self,personagem2,lista_mov,tempo):
+    def update(self,personagem2):
         # Atualização da posição do personagem
         self.rect.x += self.speedx
         self.rect.y += self.speedy
@@ -114,7 +114,7 @@ class Monstro(pygame.sprite.Sprite):
         self.rect.x += self.speedx
         self.rect.y += self.speedy
 
-    def update(self,personagem2,lista_mov,tempo):
+    def update(self,personagem2):
         # Atualizando a posição do monstro
         
         #print(self.rect.x)
@@ -224,7 +224,7 @@ class Blackout(pygame.sprite.Sprite):
         self.speedx = 0
         self.speedy = 0
 
-    def update(self,personagem2,lista_mov,tempo):
+    def update(self,personagem2):
         # Atualização da posição do personagem
 
         self.rect.x = personagem2.rect.x-1188
