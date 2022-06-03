@@ -7,6 +7,7 @@ from assets import ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BLACKOUT, CHAO_CASTELO, 
 from sprites import Blackout, Personagem, Monstro, Chave, Pontos
 from scene import make
 from posicoes_chave import posicoes
+from posicoes_monstro import lista_mov
 
 def game_screen(window):
     # Variável para o ajuste de velocidade
@@ -18,6 +19,7 @@ def game_screen(window):
     all_monstros = pygame.sprite.Group()
     all_personagem_principal = pygame.sprite.Group()
     all_pontos_chaves = pygame.sprite.Group()
+    tempo=0
 
     background = pygame.image.load(path.join(IMG_DIR, 'chao_castelo.png')).convert()
     background_rect = background.get_rect()
@@ -120,6 +122,11 @@ def game_screen(window):
                     dir_pressionado=False
                     personagem_principal.parar(assets[PARADO])
                     personagem_principal.speedy = 0
+
+        monstro.andar(lista_mov,tempo)
+        tempo+=1
+        if tempo>=len (lista_mov):
+            tempo=0
         
         if esq_pressionado==True:
             personagem_principal.esquerdo(assets[ANIMACAO_ESQUERDA])
@@ -127,7 +134,7 @@ def game_screen(window):
         if dir_pressionado==True:
             personagem_principal.direita(assets[ANIMACAO_DIREITA])
 
-        all_sprites.update(personagem_principal) #atualiza a posição do personagem e do monstro
+        all_sprites.update(personagem_principal,lista_mov,tempo) #atualiza a posição do personagem e do monstro
 
         all_sprites.draw(window)
 

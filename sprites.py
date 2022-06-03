@@ -59,7 +59,7 @@ class Personagem(pygame.sprite.Sprite):
             self.currentsprite=0
         self.image=anim[self.currentsprite]
 
-    def update(self,personagem2):
+    def update(self,personagem2,lista_mov,tempo):
         # Atualização da posição do personagem
         self.rect.x += self.speedx
         self.rect.y += self.speedy
@@ -98,20 +98,47 @@ class Monstro(pygame.sprite.Sprite):
         x = 560
         y = 40
         self.rect.topleft = (x, y)
-        self.speedx = 1
-        self.speedy = 0
+        #self.speedx = 1
+        #self.speedy = 0
         self.paredes = paredes
+        tempo=0
 
-    def update(self,personagem2):
-        # Atualizando a posição do monstro
+    def andar(self,lista_mov,tempo):
+
+        #if tempo>=len(lista_mov):
+        #    tempo=0
+        
+        self.speedx=lista_mov[tempo][0]
+        self.speedy=lista_mov[tempo][1]
+
         self.rect.x += self.speedx
         self.rect.y += self.speedy
+
+    def update(self,personagem2,lista_mov,tempo):
+        # Atualizando a posição do monstro
+        
         #print(self.rect.x)
         #print(self.rect.y)
         #print(self.speedx)
         #print(self.speedy)
         # Evita que o monstro passe pela tela
         # novas posições e velocidades
+        #self.rect.x=lista_mov[tempo][1]
+        #self.rect.y=lista_mov[tempo][0]
+        """
+        tempo+=1
+
+        if tempo>=len(lista_mov):
+            tempo=0
+        
+        self.speedx=lista_mov[tempo][0]
+        self.speedy=lista_mov[tempo][1]
+
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy"""
+
+
+        """
         if self.rect.right > WIDTH:
             self.rect.right = WIDTH
             self.speedx = -self.speedx
@@ -124,7 +151,7 @@ class Monstro(pygame.sprite.Sprite):
         if self.rect.top < 0:
             self.rect.top = 0
             self.speedy = -self.speedy
-
+        
         #evita ele passar por cima da parede
         collisions = pygame.sprite.spritecollide(self, self.paredes, False)
         if collisions != []:
@@ -174,8 +201,8 @@ class Monstro(pygame.sprite.Sprite):
                     self.speedx = 1
                 else:
                     self.speedy = 1
-                    self.speedx = 0
-                
+                    self.speedx = 0"""
+               
 
 class Wall(pygame.sprite.Sprite):
     def __init__(self, img, x, y):
@@ -197,7 +224,7 @@ class Blackout(pygame.sprite.Sprite):
         self.speedx = 0
         self.speedy = 0
 
-    def update(self,personagem2):
+    def update(self,personagem2,lista_mov,tempo):
         # Atualização da posição do personagem
 
         self.rect.x = personagem2.rect.x-1188
