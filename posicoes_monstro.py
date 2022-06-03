@@ -171,25 +171,96 @@ for i in range(8):
 
 ###monstro 3###
 
-for i in range(2):
+for i in range(3):
+    monstro_baixo(lista_mov3)
+
+for i in range(27):
     monstro_esquerda(lista_mov3)
 
-for i in range(2):
+for i in range(6):
+    monstro_cima(lista_mov3)
+
+for i in range(7):
     monstro_direita(lista_mov3)
+
+for i in range(7):
+    monstro_esquerda(lista_mov3)
+
+for i in range(6):
+    monstro_baixo(lista_mov3)
+
+for i in range(27):
+    monstro_direita(lista_mov3)
+
+for i in range(3):
+    monstro_cima(lista_mov3)
+
 
 ###monstro 4###
 
-for i in range(2):
+for i in range(4):
     monstro_esquerda(lista_mov4)
 
 for i in range(2):
+    monstro_cima(lista_mov4)
+
+for i in range(3):
+    monstro_direita(lista_mov4)
+
+for i in range(2):
+    monstro_cima(lista_mov4)
+
+for i in range(5):
+    monstro_direita(lista_mov4)
+
+for i in range(4):
+    monstro_baixo(lista_mov4)
+
+for i in range(7):
+    monstro_direita(lista_mov4)
+
+for i in range(2):
+    monstro_baixo(lista_mov4)
+
+for i in range(15):
+    monstro_esquerda(lista_mov4)
+
+for i in range(2):
+    monstro_cima(lista_mov4)
+
+for i in range(4):
     monstro_direita(lista_mov4)
 
 ###monstro 5###
+
+for i in range(5):
+    monstro_esquerda(lista_mov5)
+
+for i in range(4):
+    monstro_baixo(lista_mov5)
+
+for i in range(4):
+    monstro_esquerda(lista_mov5)
+
+for i in range(4):
+    monstro_cima(lista_mov5)
 
 for i in range(2):
     monstro_esquerda(lista_mov5)
 
 for i in range(2):
     monstro_direita(lista_mov5)
+
+for i in range(4):
+    monstro_baixo(lista_mov5)
+
+for i in range(4):
+    monstro_direita(lista_mov5)
+
+for i in range(4):
+    monstro_cima(lista_mov5)
+
+for i in range(5):
+    monstro_direita(lista_mov5)
+
 

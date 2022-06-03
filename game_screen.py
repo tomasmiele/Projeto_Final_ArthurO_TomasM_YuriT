@@ -43,11 +43,11 @@ def game_screen(window):
     img_monstro2 = assets[MONSTRO2]
     monstro2 = Monstro(img_monstro2, all_walls,1125,40)
     img_monstro3 = assets[MONSTRO3]
-    monstro3 = Monstro(img_monstro3, all_walls,565,40)
+    monstro3 = Monstro(img_monstro3, all_walls,1125,400)
     img_monstro4 = assets[MONSTRO4]
-    monstro4 = Monstro(img_monstro4, all_walls,565,40)
+    monstro4 = Monstro(img_monstro4, all_walls,445,440)
     img_monstro5 = assets[MONSTRO5]
-    monstro5 = Monstro(img_monstro5, all_walls,565,40)
+    monstro5 = Monstro(img_monstro5, all_walls,485,40)
 
     img_blackout = assets[BLACKOUT]
     #blackout = Blackout(575, 562, img_blackout)
