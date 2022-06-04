@@ -62,10 +62,16 @@ def game_screen(window):
     all_sprites.add(porta)
     all_porta.add(porta)
     
+    reposicao_chave = []
     for i in range (4):
         chave = Chave(img_chave, posicoes)
+        reposicao_chave.append([chave.x, chave.y])
         all_sprites.add(chave)
         all_chaves.add(chave)
+    
+    for i in range (4):
+        posicoes.append(reposicao_chave[i])
+        
     pontos = 0
     
     all_sprites.add(personagem_principal)

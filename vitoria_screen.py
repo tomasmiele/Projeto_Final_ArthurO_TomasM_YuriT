@@ -1,11 +1,11 @@
 import pygame
 from assets import VITORIA_BG, load_assets
-from sprites import Personagem
+from sprites import Personagem, Button
 from sympy import Q
 from mapa import matriz2
 from os import path
-from config import HEIGHT,WIDTH,IMG_DIR, FPS, BLACK, QUIT
-from assets import PARADO, VITORIA_BG, ANIMACAO_DIREITA, ANIMACAO_ESQUERDA
+from config import HEIGHT,WIDTH,IMG_DIR, FPS, BLACK, QUIT, GAME
+from assets import PARADO, VITORIA_BG, ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BOTAO_JOGAR
 from scene import make
 
 def vitoria_screen(window):
@@ -31,17 +31,26 @@ def vitoria_screen(window):
 
     relogio=0 #usado na velocidade da animação
 
+    img_botao = assets[BOTAO_JOGAR]
+    botao = Button(WIDTH/2-200, HEIGHT/2-100, img_botao, 0.5)
+
     running = True
     while running:
         clock.tick(FPS)
         window.fill(BLACK)
         window.blit(assets[VITORIA_BG], background_rect)
+        botao.draw(window)
 
         for event in pygame.event.get():
             # Verifica se foi fechado.
             if event.type == pygame.QUIT:
                 state = QUIT
                 running = False
+
+            if botao.press() == True:
+                state = GAME
+                running = False
+
             if event.type == pygame.KEYDOWN:
             # Dependendo da tecla, altera a velocidade.
                 
