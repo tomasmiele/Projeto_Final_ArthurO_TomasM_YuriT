@@ -112,10 +112,9 @@ def game_screen(window):
             pontos += 1
 
         hit2 = pygame.sprite.spritecollide(personagem_principal, all_porta, False)
-        if hit2 != [] and pontos==4:
-            state = VITORIA        
-        
-        print(pontos)
+        if hit2 != [] and pontos == 4:
+            state = VITORIA   
+            running = False     
 
         for event in pygame.event.get():
             # Verifica se foi fechado.
