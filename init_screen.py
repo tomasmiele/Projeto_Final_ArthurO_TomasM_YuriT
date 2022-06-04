@@ -15,7 +15,7 @@ def init_screen(window):
     background_rect = background.get_rect()
 
     img_botao = assets[BOTAO_JOGAR]
-    botao = Button(WIDTH/2-200, HEIGHT/2-100, img_botao, 0.5)
+    botao = Button(WIDTH/2-225, HEIGHT/2-125, img_botao, 0.5)
 
     running = True
     while running:

@@ -13,7 +13,6 @@ pygame.display.set_caption('Castelo Assombrado')
 
 state = INIT
 while state != QUIT:
-    print(state)
     if state == INIT:
         state = init_screen(window)
     elif state == GAME:
