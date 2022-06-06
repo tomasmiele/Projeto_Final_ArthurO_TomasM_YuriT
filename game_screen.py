@@ -1,3 +1,4 @@
+from random import randint, random
 from numpy import False_
 import pygame
 from sympy import Q
@@ -7,7 +8,7 @@ from config import BLACK, FPS, GAME, QUIT, VITORIA, WHITE, WIDTH, HEIGHT, IMG_DI
 from assets import ALCAPAS, ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BLACKOUT, CHAO_CASTELO, MONSTRO, MONSTRO2,MONSTRO3,MONSTRO4,MONSTRO5, PARADO, RAIO, load_assets, CHAVE, PORTA
 from sprites import Alcapas, Blackout, Personagem, Monstro, Chave, Pontos, Porta, Raio
 from scene import make
-from posicoes_chave import posicoes
+from posicoes_chave import posicoes, posicoes_clarao
 from posicoes_monstro import lista_mov, lista_mov2,lista_mov3,lista_mov4,lista_mov5
 
 def game_screen(window):
@@ -75,22 +76,26 @@ def game_screen(window):
     all_sprites.add(alcapas1)
     all_sprites.add(alcapas2)
 
-
-    img_raio = assets[RAIO]
-    raio= Raio(535, 522,img_raio)
-
-    all_raios.add(raio)
-    all_sprites.add(raio)
-
     reposicao_chave = []
     for i in range (4):
         chave = Chave(img_chave, posicoes)
         reposicao_chave.append([chave.x, chave.y])
         all_sprites.add(chave)
         all_chaves.add(chave)
-    
+        print(chave.x, chave.y)
+
     for i in range (4):
         posicoes.append(reposicao_chave[i])
+
+    pos_raio = posicoes_clarao[randint(0, len(posicoes) - 1)]
+    x_raio = pos_raio[0]
+    y_raio = pos_raio[1]
+    
+    img_raio = assets[RAIO]
+    raio = Raio(x_raio, y_raio,img_raio)
+
+    all_raios.add(raio)
+    all_sprites.add(raio)
         
     pontos = 0
     
@@ -108,8 +113,8 @@ def game_screen(window):
     all_monstros.add(monstro4)
     all_monstros.add(monstro5)
 
-    all_sprites.add(blackout) 
-    all_blackout.add(blackout)
+    #all_sprites.add(blackout) 
+    #all_blackout.add(blackout)
 
 
     esq_pressionado=False #usado na animação
