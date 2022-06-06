@@ -27,6 +27,8 @@ CHAVE = 'chave'
 VITORIA_BG='vitoria_bg'
 PORTA = 'porta'
 BOTAO_JOGARN = 'jogar_novamente'
+ALCAPAS='alcapas'
+RAIO='raio'
 
 def load_assets():
     assets = {}
@@ -57,7 +59,10 @@ def load_assets():
     assets[PORTA] = pygame.image.load(os.path.join(IMG_DIR, 'porta.png')).convert_alpha()
     assets[BOTAO_JOGARN] = pygame.image.load(os.path.join(IMG_DIR, 'botao_jogar_n.png')).convert_alpha()
     assets[BOTAO_JOGARN] = pygame.transform.scale(assets[BOTAO_JOGARN], (BOTAO_WIDTH, BOTAO_HEIGHT))
-
+    assets[ALCAPAS] = pygame.image.load(os.path.join(IMG_DIR, 'alcapas.png')).convert_alpha()
+    assets[ALCAPAS] = pygame.transform.scale(assets[ALCAPAS], (40, 40))
+    assets[RAIO] = pygame.image.load(os.path.join(IMG_DIR, 'raio.png')).convert_alpha()
+    
     #Estados do personagem
 
     assets[PARADO] = pygame.image.load(os.path.join(IMG_DIR, 'parado.png')).convert_alpha()

@@ -4,8 +4,8 @@ from sympy import Q
 from mapa import matriz
 from os import path
 from config import BLACK, FPS, GAME, QUIT, VITORIA, WHITE, WIDTH, HEIGHT, IMG_DIR, MORTE
-from assets import ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BLACKOUT, CHAO_CASTELO, MONSTRO, MONSTRO2,MONSTRO3,MONSTRO4,MONSTRO5, PARADO, load_assets, CHAVE, PORTA
-from sprites import Blackout, Personagem, Monstro, Chave, Pontos, Porta
+from assets import ALCAPAS, ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BLACKOUT, CHAO_CASTELO, MONSTRO, MONSTRO2,MONSTRO3,MONSTRO4,MONSTRO5, PARADO, RAIO, load_assets, CHAVE, PORTA
+from sprites import Alcapas, Blackout, Personagem, Monstro, Chave, Pontos, Porta, Raio
 from scene import make
 from posicoes_chave import posicoes
 from posicoes_monstro import lista_mov, lista_mov2,lista_mov3,lista_mov4,lista_mov5
@@ -22,6 +22,9 @@ def game_screen(window):
     all_blackout = pygame.sprite.Group()
     all_pontos_chaves = pygame.sprite.Group()
     all_porta = pygame.sprite.Group()
+    all_alcapas1 = pygame.sprite.Group()
+    all_alcapas2 = pygame.sprite.Group()
+    all_raios = pygame.sprite.Group()
     tempo=0
     tempo2=0
     tempo3=0
@@ -62,6 +65,23 @@ def game_screen(window):
     all_sprites.add(porta)
     all_porta.add(porta)
     
+    img_alcapas = assets[ALCAPAS]
+    alcapas1= Alcapas(200,40,img_alcapas)
+    alcapas2= Alcapas(1040,440,img_alcapas)
+
+    all_alcapas1.add(alcapas1)
+    all_alcapas2.add(alcapas2)
+
+    all_sprites.add(alcapas1)
+    all_sprites.add(alcapas2)
+
+
+    img_raio = assets[RAIO]
+    raio= Raio(535, 522,img_raio)
+
+    all_raios.add(raio)
+    all_sprites.add(raio)
+
     reposicao_chave = []
     for i in range (4):
         chave = Chave(img_chave, posicoes)
@@ -100,6 +120,8 @@ def game_screen(window):
 
     for s in all_walls.sprites():
         all_sprites.add(s)
+
+    timer = 2 * FPS
     
     running = True
     while running:
@@ -120,8 +142,16 @@ def game_screen(window):
         hit2 = pygame.sprite.spritecollide(personagem_principal, all_porta, False)
         if hit2 != [] and pontos == 4:
             state = VITORIA   
-            running = False     
+            running = False    
 
+        hit3 = pygame.sprite.spritecollide(personagem_principal, all_alcapas1, False)
+        if hit3 != []:
+            personagem_principal.rect.topleft = (1040,400)   
+
+        hit4 = pygame.sprite.spritecollide(personagem_principal, all_alcapas2, False)
+        if hit4 != []:
+            personagem_principal.rect.topleft = (200,80)  
+        
         for event in pygame.event.get():
             # Verifica se foi fechado.
             if event.type == pygame.QUIT:
@@ -203,7 +233,18 @@ def game_screen(window):
 
         all_porta.draw(window)
 
-        all_blackout.draw(window)
+        all_alcapas1.draw(window)
+
+        all_alcapas2.draw(window)
+
+        hit5 = pygame.sprite.spritecollide(personagem_principal, all_raios, True)
+        if len(hit5) > 0:
+            timer = 0
+        if timer >= 2 * FPS:
+            all_blackout.draw(window)
+
+        timer += 1
+
 
         all_personagem_principal.draw(window)
 
