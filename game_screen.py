@@ -3,7 +3,7 @@ import pygame
 from sympy import Q
 from mapa import matriz
 from os import path
-from config import BLACK, FPS, GAME, QUIT, VITORIA, WHITE, WIDTH, HEIGHT, IMG_DIR
+from config import BLACK, FPS, GAME, QUIT, VITORIA, WHITE, WIDTH, HEIGHT, IMG_DIR, MORTE
 from assets import ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BLACKOUT, CHAO_CASTELO, MONSTRO, MONSTRO2,MONSTRO3,MONSTRO4,MONSTRO5, PARADO, load_assets, CHAVE, PORTA
 from sprites import Blackout, Personagem, Monstro, Chave, Pontos, Porta
 from scene import make
@@ -110,7 +110,7 @@ def game_screen(window):
         #se o monstro bater no personagem principal ele morre e acaba o jogo
         hits = pygame.sprite.spritecollide(personagem_principal, all_monstros, False)
         if hits != []:
-            state = QUIT
+            state = MORTE
             running = False
 
         hit = pygame.sprite.spritecollide(personagem_principal, all_chaves, True)

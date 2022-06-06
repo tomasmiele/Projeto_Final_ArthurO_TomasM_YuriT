@@ -1,11 +1,11 @@
 import pygame
-from assets import VITORIA_BG, load_assets
+from assets import BOTAO_JOGARN, VITORIA_BG, load_assets
 from sprites import Personagem, Button
 from sympy import Q
 from mapa import matriz2
 from os import path
-from config import HEIGHT,WIDTH,IMG_DIR, FPS, BLACK, QUIT, GAME
-from assets import PARADO, VITORIA_BG, ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BOTAO_JOGAR
+from config import HEIGHT,WIDTH,IMG_DIR, FPS, BLACK, QUIT, GAME, YELLOW
+from assets import PARADO, VITORIA_BG, ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BOTAO_JOGARN
 from scene import make
 
 def vitoria_screen(window):
@@ -13,12 +13,13 @@ def vitoria_screen(window):
 
     assets = load_assets()
     
-    all_walls = make(matriz2)
-
     all_sprites = pygame.sprite.Group()
 
-    background = pygame.image.load(path.join(IMG_DIR, 'Vitoria.png')).convert()
-    background_rect = background.get_rect()
+    all_walls = make(matriz2)
+
+
+    #background = pygame.image.load(path.join(IMG_DIR, 'Vitoria.png')).convert()
+    #background_rect = background.get_rect()
     personagem_principal = pygame.image.load(path.join(IMG_DIR, 'parado.png')).convert_alpha()
 
     img_personagem_principal = assets[PARADO]
@@ -31,14 +32,17 @@ def vitoria_screen(window):
 
     relogio=0 #usado na velocidade da animação
 
-    img_botao = assets[BOTAO_JOGAR]
+    img_botao = assets[BOTAO_JOGARN]
     botao = Button(WIDTH/2-225, HEIGHT/2-125, img_botao, 0.5)
+
+    for s in all_walls.sprites():
+        all_sprites.add(s)
 
     running = True
     while running:
         clock.tick(FPS)
-        window.fill(BLACK)
-        window.blit(assets[VITORIA_BG], background_rect)
+        window.fill(YELLOW)
+        #window.blit(assets[VITORIA_BG], background_rect)
         botao.draw(window)
 
         for event in pygame.event.get():

@@ -17,6 +17,7 @@ PAREDE2 = 'parede2'
 PAREDE3 = 'parede3'
 PAREDE4 = 'parede4'
 PAREDE5 = 'parede5'
+PAREDE6 = 'parede6'
 ANIMACAO_DIREITA = 'animacao_direita'
 ANIMACAO_ESQUERDA = 'animacao_esquerda'
 PARADO=  'parado'
@@ -25,6 +26,7 @@ BLACKOUT = 'blackout'
 CHAVE = 'chave'
 VITORIA_BG='vitoria_bg'
 PORTA = 'porta'
+BOTAO_JOGARN = 'jogar_novamente'
 
 def load_assets():
     assets = {}
@@ -53,6 +55,8 @@ def load_assets():
     assets[VITORIA_BG] = pygame.image.load(os.path.join(IMG_DIR, 'Vitoria.png')).convert()
     assets[VITORIA_BG] = pygame.transform.scale(assets[VITORIA_BG], (WIDTH, HEIGHT))
     assets[PORTA] = pygame.image.load(os.path.join(IMG_DIR, 'porta.png')).convert_alpha()
+    assets[BOTAO_JOGARN] = pygame.image.load(os.path.join(IMG_DIR, 'botao_jogar_n.png')).convert_alpha()
+    assets[BOTAO_JOGARN] = pygame.transform.scale(assets[BOTAO_JOGARN], (BOTAO_WIDTH, BOTAO_HEIGHT))
 
     #Estados do personagem
 
@@ -90,6 +94,8 @@ def load_assets():
     assets[PAREDE4] = pygame.transform.scale(assets[PAREDE4], (40, 40))
     assets[PAREDE5] = pygame.image.load(os.path.join(IMG_DIR, 'Parede5.png')).convert()
     assets[PAREDE5] = pygame.transform.scale(assets[PAREDE5], (40, 40))
+    assets[PAREDE6] = pygame.image.load(os.path.join(IMG_DIR, 'Parede6.png')).convert()
+    assets[PAREDE6] = pygame.transform.scale(assets[PAREDE6], (40, 40))
 
     #sons
     pygame.mixer.music.load(os.path.join(SND_DIR, 'musica_principal.wav'))

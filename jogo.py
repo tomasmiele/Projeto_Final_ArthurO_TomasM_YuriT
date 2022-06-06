@@ -1,9 +1,10 @@
 import pygame
 import random
-from config import WIDTH, HEIGHT, INIT, GAME, QUIT, VITORIA
+from config import WIDTH, HEIGHT, INIT, GAME, QUIT, VITORIA, MORTE
 from init_screen import init_screen
 from game_screen import game_screen
 from vitoria_screen import vitoria_screen
+from jogar_novamente_screen import jogar_novamente_screen
 
 pygame.init()
 pygame.mixer.init()
@@ -19,6 +20,8 @@ while state != QUIT:
         state = game_screen(window)
     elif state == VITORIA:
         state = vitoria_screen(window)
+    elif state == MORTE:
+        state = jogar_novamente_screen(window)
     else:
         state = QUIT
  
