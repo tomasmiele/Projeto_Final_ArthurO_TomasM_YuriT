@@ -241,6 +241,8 @@ def game_screen(window):
 
         all_alcapas2.draw(window)
 
+        all_chaves.draw(window)
+
         hit5 = pygame.sprite.spritecollide(personagem_principal, all_raios, True)
         if len(hit5) > 0:
             timer = 0
