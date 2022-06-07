@@ -4,7 +4,7 @@ from sprites import Personagem, Button
 from sympy import Q
 from mapa import matriz2
 from os import path
-from config import HEIGHT,WIDTH,IMG_DIR, FPS, BLACK, QUIT, GAME
+from config import HEIGHT,WIDTH,IMG_DIR, FPS, BLACK, QUIT, GAME, SND_DIR
 from assets import PARADO, VITORIA_BG, ANIMACAO_DIREITA, ANIMACAO_ESQUERDA, BOTAO_JOGARN2
 from scene import make
 
@@ -19,7 +19,8 @@ def jogar_novamente_screen(window):
     img_botao = assets[BOTAO_JOGARN2]
     botao = Button(WIDTH/2-225, HEIGHT/2+0, img_botao, 0.5)
     
-
+    swoosh = pygame.mixer.Sound(path.join(SND_DIR, 'swoosh_de_terror.wav'))
+    swoosh.play()
     running = True
     while running:
         clock.tick(FPS)
