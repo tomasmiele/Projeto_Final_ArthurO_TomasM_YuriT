@@ -120,6 +120,10 @@ def game_screen(window):
 
     dir_pressionado=False #usado na animação
 
+    cima_pressionado=False
+
+    baixo_pressionado=False
+
     relogio=0 #usado na velocidade da animação
 
     for s in all_walls.sprites():
@@ -170,11 +174,11 @@ def game_screen(window):
 
                 if event.key == pygame.K_UP :
                     personagem_principal.speedy -= 1
-                    dir_pressionado=True #animação de andar para direita
+                    cima_pressionado=True #animação de andar para direita
 
                 if event.key == pygame.K_DOWN :
                     personagem_principal.speedy += 1
-                    dir_pressionado=True #animação de andar para direita
+                    baixo_pressionado=True #animação de andar para direita
 
                 if event.key == pygame.K_LEFT :
                     personagem_principal.speedx -= 1
@@ -194,12 +198,12 @@ def game_screen(window):
                     personagem_principal.parar(assets[PARADO])
 
                 if event.key == pygame.K_UP:
-                    dir_pressionado=False
+                    cima_pressionado=False
                     personagem_principal.parar(assets[PARADO])
                     personagem_principal.speedy = 0
 
                 if event.key == pygame.K_DOWN:
-                    dir_pressionado=False
+                    baixo_pressionado=False
                     personagem_principal.parar(assets[PARADO])
                     personagem_principal.speedy = 0
 
@@ -225,10 +229,16 @@ def game_screen(window):
         if tempo5>=len (lista_mov5):
             tempo5=0
         
-        if esq_pressionado==True:
+        if esq_pressionado==True and dir_pressionado==False:
             personagem_principal.esquerdo(assets[ANIMACAO_ESQUERDA])
 
         if dir_pressionado==True:
+            personagem_principal.direita(assets[ANIMACAO_DIREITA])
+
+        if cima_pressionado==True and esq_pressionado==False and dir_pressionado==False:
+            personagem_principal.direita(assets[ANIMACAO_DIREITA])
+
+        if baixo_pressionado==True and esq_pressionado==False and dir_pressionado==False:
             personagem_principal.direita(assets[ANIMACAO_DIREITA])
 
         all_sprites.update(personagem_principal) #atualiza a posição do personagem e do monstro
