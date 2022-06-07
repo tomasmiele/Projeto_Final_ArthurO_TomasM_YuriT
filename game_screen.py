@@ -82,12 +82,11 @@ def game_screen(window):
         reposicao_chave.append([chave.x, chave.y])
         all_sprites.add(chave)
         all_chaves.add(chave)
-        print(chave.x, chave.y)
 
     for i in range (4):
         posicoes.append(reposicao_chave[i])
 
-    pos_raio = posicoes_clarao[randint(0, len(posicoes) - 1)]
+    pos_raio = posicoes_clarao[randint(0, len(posicoes_clarao) - 1)]
     x_raio = pos_raio[0]
     y_raio = pos_raio[1]
     
@@ -113,8 +112,8 @@ def game_screen(window):
     all_monstros.add(monstro4)
     all_monstros.add(monstro5)
 
-    #all_sprites.add(blackout) 
-    #all_blackout.add(blackout)
+    all_sprites.add(blackout) 
+    all_blackout.add(blackout)
 
 
     esq_pressionado=False #usado na animação
