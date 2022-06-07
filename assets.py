@@ -107,8 +107,8 @@ def load_assets():
     assets[PAREDE6] = pygame.transform.scale(assets[PAREDE6], (40, 40))
 
     #sons
-    pygame.mixer.music.load(os.path.join(SND_DIR, 'musica_principal.wav'))
-    pygame.mixer.music.set_volume(0.4)
+    pygame.mixer.music.load(os.path.join(SND_DIR, 'soundtrack.mp3'))
+    pygame.mixer.music.set_volume(0.9)
     assets[SWOOSH_SOUND]= pygame.mixer.Sound(os.path.join(SND_DIR, 'swoosh_de_terror.wav'))
     
     return assets

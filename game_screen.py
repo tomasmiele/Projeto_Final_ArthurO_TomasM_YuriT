@@ -131,6 +131,7 @@ def game_screen(window):
 
     timer = 2 * FPS
     
+    pygame.mixer.music.play(loops=-1)
     running = True
     while running:
         clock.tick(FPS)

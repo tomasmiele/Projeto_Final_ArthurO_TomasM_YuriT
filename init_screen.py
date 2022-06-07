@@ -17,6 +17,7 @@ def init_screen(window):
     img_botao = assets[BOTAO_JOGAR]
     botao = Button(WIDTH/2-224, HEIGHT/2+15, img_botao, 0.5)
 
+    pygame.mixer.music.play(loops=-1)
     running = True
     while running:
 
