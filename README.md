@@ -8,6 +8,7 @@ Castelo Assombrado
     Para controlar o personagem use as setas do computador;
     Para coletar uma chave basta passar por cima dela;
     A cada jogo as posições das chaves mudam aleatoriamente;
+    Há dois alçapões no mapa, ao entrar nele (passar por cima), o jogador é teletransportado para o outro alçapão;
     Existe um item, que só pode ser coletado uma vez, que monstra o mapa e os locais das chaves, para coletá-lo basta passar por cima dele;
     Caso desista do jogo ou deseje parar de jogar para encerrá-lo clique no 'x' da aba;
     Caso algum monstro encoste no personagem, o último morrerá e o jogo acaba, porém há a possibilidade de clicar em um botão para jogar novamente.
@@ -17,4 +18,6 @@ Castelo Assombrado
     Tomas R. Miele
     Yuri Tabacof
     
-  Link para um vídeo mostrando o funcionamento do jogo: XXX
+  Engenharia 1B - 2022.1
+    
+  Link para um vídeo mostrando o funcionamento do jogo: https://youtu.be/n5ksJ9-Vjbc 
