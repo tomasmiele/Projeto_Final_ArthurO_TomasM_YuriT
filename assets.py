@@ -73,22 +73,23 @@ def load_assets():
     assets[PARADO] = pygame.transform.scale(assets[PARADO], (PERSONAGEM_WIDTH, PERSONAGEM_HEIGHT))
 
     #animação de andar
-    animacao_direita = []
-    for i in range(8):
-        # Os arquivos de animação são numerados de 00 a 08
-        filename = os.path.join(IMG_DIR, '{}.png'.format(i))
+
+    def animacoes(lado, i):
+        if lado == 'direita':
+            filename = os.path.join(IMG_DIR, '{}.png'.format(i))
+        elif lado == 'esquerda':
+            filename = os.path.join(IMG_DIR, 'esquerda{}.png'.format(i))
         img = pygame.image.load(filename).convert_alpha()
         img = pygame.transform.scale(img, (PERSONAGEM_WIDTH, PERSONAGEM_HEIGHT))
-        animacao_direita.append(img)
-    assets[ANIMACAO_DIREITA] = animacao_direita
-    
+        return img
+
+    animacao_direita = []
     animacao_esquerda = []
     for i in range(8):
         # Os arquivos de animação são numerados de 00 a 08
-        filename = os.path.join(IMG_DIR, 'esquerda{}.png'.format(i))
-        img = pygame.image.load(filename).convert_alpha()
-        img = pygame.transform.scale(img, (PERSONAGEM_WIDTH, PERSONAGEM_HEIGHT))
-        animacao_esquerda.append(img)
+        animacao_direita.append(animacoes('direita', i))
+        animacao_esquerda.append(animacoes('esquerda', i))
+    assets[ANIMACAO_DIREITA] = animacao_direita
     assets[ANIMACAO_ESQUERDA] = animacao_esquerda
 
 
